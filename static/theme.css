@@ -20,14 +20,14 @@
 
 .sol-theme {
   background-color: var(--sol-base3);
-  color: var(--sol-base00);
+  color: var(--sol-base01);            /* base00→base01 (5.3:1) */
 }
 
 .sol-theme h1,
 .sol-theme h2,
 .sol-theme h3,
 .sol-theme h4 {
-  color: var(--sol-base01);
+  color: var(--sol-base02);            /* base01→base02 (12.6:1) */
 }
 
 .sol-theme a {
@@ -43,7 +43,7 @@
   border-bottom: 1px solid #d6ceb5;
 }
 .sol-theme .sc-lp-header a {
-  color: var(--sol-base01);
+  color: var(--sol-base02);            /* ← 濃く */
 }
 .sol-theme .sc-lp-header a:hover {
   color: var(--sol-blue);
@@ -54,35 +54,42 @@
   background: linear-gradient(180deg, var(--sol-base2) 0%, var(--sol-base3) 100%);
 }
 .sol-theme .sc-lp-hero__headline {
-  color: var(--sol-base02);
+  color: var(--sol-base03);            /* 最も濃い色 */
 }
 .sol-theme .sc-lp-hero__subhead {
-  color: var(--sol-base00);
+  color: var(--sol-base01);            /* base00→base01 */
 }
 
-/* Feature cards */
+/* Feature cards — 静的（ホバー効果なし） */
 .sol-theme .sc-lp-features__card {
   background: var(--sol-base3);
   border: 1px solid var(--sol-base2);
-}
-.sol-theme .sc-lp-features__card:hover {
-  border-color: var(--sol-blue);
-  box-shadow: 0 2px 12px rgba(38, 139, 210, 0.1);
 }
 
 /* Sections */
 .sol-theme .sc-lp-section {
   background: var(--sol-base3);
 }
+.sol-theme .sc-lp-section__title {
+  color: var(--sol-base02);
+}
 
 /* Code blocks */
 .sol-theme pre,
 .sol-theme code {
-  background: var(--sol-base2);
-  color: var(--sol-base01);
+  background: var(--sol-base02);
+  color: var(--sol-base1);
 }
 .sol-theme pre {
-  border: 1px solid #d6ceb5;
+  border: none;
+  border-radius: 8px;
+}
+.sol-theme :not(pre) > code {
+  background: var(--sol-base2);
+  color: var(--sol-base01);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.875em;
 }
 
 /* Buttons override for Solarized */
@@ -103,13 +110,40 @@
   background: rgba(38, 139, 210, 0.08);
 }
 
+/* Layout demo cards — インタラクティブ */
+.sol-theme .layout-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--sol-base2);
+  text-align: center;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.sol-theme .layout-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 43, 54, 0.1);
+  border-color: var(--sol-blue);
+}
+.sol-theme .layout-card__title {
+  font-weight: 600;
+  color: var(--sol-base02);
+}
+.sol-theme .layout-card__code {
+  font-size: 0.8125rem;
+  color: var(--sol-base00);
+  font-family: monospace;
+}
+
 /* Footer */
 .sol-theme .sc-lp-footer {
   background: var(--sol-base2);
-  color: var(--sol-base00);
+  color: var(--sol-base01);
 }
 .sol-theme .sc-lp-footer a {
-  color: var(--sol-base01);
+  color: var(--sol-base02);
 }
 
 /* Docs */
@@ -118,29 +152,98 @@
   border-bottom: 1px solid #d6ceb5;
 }
 .sol-theme .sc-docs-header a {
-  color: var(--sol-base01);
+  color: var(--sol-base02);
 }
 .sol-theme .sc-docs-sidebar {
   background: var(--sol-base3);
   border-right: 1px solid var(--sol-base2);
 }
 .sol-theme .sc-docs-sidebar__group-label {
-  color: var(--sol-base0);
+  color: var(--sol-base00);
 }
 .sol-theme .sc-docs-sidebar__link {
-  color: var(--sol-base00);
+  color: var(--sol-base01);
 }
 .sol-theme .sc-docs-sidebar__link--active {
   color: var(--sol-blue);
   border-left-color: var(--sol-blue);
 }
 .sol-theme .sc-docs-article {
-  color: var(--sol-base00);
+  color: var(--sol-base01);
+}
+.sol-theme .sc-docs-article h1,
+.sol-theme .sc-docs-article h2,
+.sol-theme .sc-docs-article h3 {
+  color: var(--sol-base02);
 }
 .sol-theme .sc-docs-article table {
   border-color: var(--sol-base2);
 }
 .sol-theme .sc-docs-article th {
   background: var(--sol-base2);
+  color: var(--sol-base02);
+}
+
+/* Copy button */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid var(--sol-base0);
+  border-radius: 6px;
+  color: var(--sol-base0);
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+.copy-btn:hover {
   color: var(--sol-base01);
+  border-color: var(--sol-base01);
+}
+.copy-btn[data-copied="true"] {
+  color: var(--sol-green);
+  border-color: var(--sol-green);
+}
+
+/* GFM markdown-body overrides for Solarized */
+.sol-theme .markdown-body {
+  color: var(--sol-base01);
+  background: transparent;
+}
+.sol-theme .markdown-body h1,
+.sol-theme .markdown-body h2,
+.sol-theme .markdown-body h3,
+.sol-theme .markdown-body h4 {
+  color: var(--sol-base02);
+  border-bottom-color: var(--sol-base2);
+}
+.sol-theme .markdown-body a {
+  color: var(--sol-blue);
+}
+.sol-theme .markdown-body code {
+  background: var(--sol-base2);
+  color: var(--sol-base01);
+}
+.sol-theme .markdown-body pre {
+  background: var(--sol-base02);
+}
+.sol-theme .markdown-body pre code {
+  background: transparent;
+  color: var(--sol-base1);
+}
+.sol-theme .markdown-body blockquote {
+  border-left-color: var(--sol-blue);
+  color: var(--sol-base00);
+}
+.sol-theme .markdown-body table th {
+  background: var(--sol-base2);
+}
+.sol-theme .markdown-body table td,
+.sol-theme .markdown-body table th {
+  border-color: var(--sol-base2);
+}
+.sol-theme .markdown-body hr {
+  background-color: var(--sol-base2);
 }

@@ -1,4 +1,5 @@
 import { define } from "@/utils.ts";
+import CopyButton from "../islands/CopyButton.tsx";
 
 // Lucide SVG icons (inline)
 const IconRuler = () => (
@@ -57,8 +58,8 @@ export default define.page(function LandingPage() {
         <div class="sc-lp-hero__inner">
           <h1 class="sc-lp-hero__headline">Sawcase</h1>
           <p class="sc-lp-hero__subhead">
-            sawtooth-css の上に載るレイアウト CSS + 軽量 JS。<br />
-            管理画面・ドキュメント・認証画面の骨格をクラスベースで提供します。
+            Deno Fresh 専用の SaaS スターターキット。<br />
+            管理画面・ドキュメント・認証画面の骨格を Preact コンポーネントで提供します。
           </p>
           <div class="sc-lp-hero__actions">
             <a href="/docs" class="st-button st-button--filled st-button--lg">
@@ -83,9 +84,9 @@ export default define.page(function LandingPage() {
           </div>
           <div class="sc-lp-features__card">
             <div class="sc-lp-features__card-icon" style="color:var(--sol-cyan);"><IconPuzzle /></div>
-            <h3 class="sc-lp-features__card-title">クラスベース</h3>
+            <h3 class="sc-lp-features__card-title">Fresh 専用</h3>
             <p class="sc-lp-features__card-description">
-              フレームワーク非依存。HTML にクラス名を付けるだけ。Fresh, Hono, 素の HTML で動作。
+              Deno Fresh に最適化。Preact コンポーネントとして提供。deno add だけで即使える。
             </p>
           </div>
           <div class="sc-lp-features__card">
@@ -103,20 +104,20 @@ export default define.page(function LandingPage() {
         <div class="sc-lp-section__inner" style="text-align:center;">
           <h2 class="sc-lp-section__title">提供レイアウト</h2>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px;max-width:640px;margin-left:auto;margin-right:auto;">
-            <a href="/demo/admin" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;padding:20px;border-radius:12px;background:var(--sol-base2);text-align:center;transition:border-color 0.2s;border:1px solid transparent;">
+            <a href="/demo/admin" target="_blank" rel="noopener" class="layout-card">
               <div style="margin-bottom:6px;color:var(--sol-blue);"><IconLayoutDashboard /></div>
-              <div style="font-weight:600;color:var(--sol-base01);">管理画面</div>
-              <div style="font-size:0.8125rem;color:var(--sol-base0);font-family:monospace;">sc-admin-*</div>
+              <div class="layout-card__title">管理画面</div>
+              <div class="layout-card__code">sc-admin-*</div>
             </a>
-            <a href="/demo/docs" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;padding:20px;border-radius:12px;background:var(--sol-base2);text-align:center;transition:border-color 0.2s;border:1px solid transparent;">
+            <a href="/demo/docs" target="_blank" rel="noopener" class="layout-card">
               <div style="margin-bottom:6px;color:var(--sol-cyan);"><IconFileText /></div>
-              <div style="font-weight:600;color:var(--sol-base01);">ドキュメント</div>
-              <div style="font-size:0.8125rem;color:var(--sol-base0);font-family:monospace;">sc-docs-*</div>
+              <div class="layout-card__title">ドキュメント</div>
+              <div class="layout-card__code">sc-docs-*</div>
             </a>
-            <a href="/demo/auth/login" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;padding:20px;border-radius:12px;background:var(--sol-base2);text-align:center;transition:border-color 0.2s;border:1px solid transparent;">
+            <a href="/demo/auth/login" target="_blank" rel="noopener" class="layout-card">
               <div style="margin-bottom:6px;color:var(--sol-green);"><IconLock /></div>
-              <div style="font-weight:600;color:var(--sol-base01);">認証画面</div>
-              <div style="font-size:0.8125rem;color:var(--sol-base0);font-family:monospace;">sc-auth</div>
+              <div class="layout-card__title">認証画面</div>
+              <div class="layout-card__code">sc-auth</div>
             </a>
           </div>
         </div>
@@ -126,9 +127,12 @@ export default define.page(function LandingPage() {
       <section class="sc-lp-section">
         <div class="sc-lp-section__inner" style="text-align:center;">
           <h2 class="sc-lp-section__title">インストール</h2>
-          <pre style="display:inline-block;text-align:left;background:var(--sol-base02);color:var(--sol-base1);padding:16px 24px;border-radius:8px;font-size:0.875rem;margin-top:16px;"><code>deno add @kotsumo/sawcase</code></pre>
-          <p style="font-size:0.8125rem;color:var(--sol-base0);margin-top:8px;">
-            sawtooth-css, @deno/gfm は依存として自動インストールされます
+          <div style="display:inline-flex;align-items:center;gap:12px;background:var(--sol-base02);padding:12px 20px;border-radius:8px;margin-top:16px;">
+            <code style="color:var(--sol-base1);font-size:0.875rem;">deno add @kotsumo/sawcase</code>
+            <CopyButton value="deno add @kotsumo/sawcase" />
+          </div>
+          <p style="font-size:0.8125rem;color:var(--sol-base00);margin-top:8px;">
+            sawtooth-css, @deno/gfm, Zag.js, lucide-preact は依存として自動インストールされます
           </p>
         </div>
       </section>
