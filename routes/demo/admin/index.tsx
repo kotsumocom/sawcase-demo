@@ -36,7 +36,9 @@ export default define.page(function DashboardPage() {
         <div
           style="background:var(--st-sys-color-surface-container-low,#f7f2fa);border-radius:16px;padding:48px;text-align:center;color:#49454f;"
         >
-          <p style="font-size:1.25rem;margin:0 0 8px;">📊</p>
+          <p style="margin:0;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#49454f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" /></svg>
+          </p>
           <p style="margin:0;">ここにグラフやチャートが入ります</p>
         </div>
       </div>

@@ -13,13 +13,13 @@ export default define.page(function AdminLayout({ Component }) {
           </svg>
         </button>
         <div class="sc-admin-header__brand">
-          <span class="sc-admin-header__app-name">
-            <a href="/" style="text-decoration:none;color:inherit;">Sawcase Demo</a>
-          </span>
+          <span class="sc-admin-header__app-name">Sawcase Demo</span>
         </div>
         <div class="sc-admin-header__breadcrumb">管理画面デモ</div>
         <div class="sc-admin-header__actions">
-          <a href="/demo/auth/login" style="background:none;border:none;cursor:pointer;padding:8px;text-decoration:none;">👤</a>
+          <a href="/demo/auth/login" style="background:none;border:none;cursor:pointer;padding:8px;text-decoration:none;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+          </a>
         </div>
       </header>
 
@@ -56,9 +56,7 @@ export default define.page(function AdminLayout({ Component }) {
               <span>設定</span>
             </a>
           </div>
-          <div class="sc-admin-nav__footer">
-            <a href="/" class="sc-admin-nav__link">← サイトに戻る</a>
-          </div>
+
         </nav>
 
         {/* オーバーレイ */}

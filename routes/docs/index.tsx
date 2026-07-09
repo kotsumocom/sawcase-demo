@@ -56,7 +56,7 @@ export default define.page(function DocsIndexPage() {
       </table>
 
       <h2 id="quick-start">クイックスタート</h2>
-      <pre><code>{`deno add @kotsumo/sawcase @kotsumo/sawtooth-css`}</code></pre>
+      <pre><code>{`deno add @kotsumo/sawcase`}</code></pre>
       <p>
         詳しくは <a href="/docs/install">インストール手順</a> を参照してください。
       </p>

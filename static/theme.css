@@ -1,0 +1,146 @@
+/* Solarized Light Theme — LP + Docs pages only */
+:root {
+  --sol-base03: #002b36;
+  --sol-base02: #073642;
+  --sol-base01: #586e75;
+  --sol-base00: #657b83;
+  --sol-base0: #839496;
+  --sol-base1: #93a1a1;
+  --sol-base2: #eee8d5;
+  --sol-base3: #fdf6e3;
+  --sol-yellow: #b58900;
+  --sol-orange: #cb4b16;
+  --sol-red: #dc322f;
+  --sol-magenta: #d33682;
+  --sol-violet: #6c71c4;
+  --sol-blue: #268bd2;
+  --sol-cyan: #2aa198;
+  --sol-green: #859900;
+}
+
+.sol-theme {
+  background-color: var(--sol-base3);
+  color: var(--sol-base00);
+}
+
+.sol-theme h1,
+.sol-theme h2,
+.sol-theme h3,
+.sol-theme h4 {
+  color: var(--sol-base01);
+}
+
+.sol-theme a {
+  color: var(--sol-blue);
+}
+.sol-theme a:hover {
+  color: var(--sol-cyan);
+}
+
+/* LP Header */
+.sol-theme .sc-lp-header {
+  background: var(--sol-base2);
+  border-bottom: 1px solid #d6ceb5;
+}
+.sol-theme .sc-lp-header a {
+  color: var(--sol-base01);
+}
+.sol-theme .sc-lp-header a:hover {
+  color: var(--sol-blue);
+}
+
+/* LP Hero */
+.sol-theme .sc-lp-hero {
+  background: linear-gradient(180deg, var(--sol-base2) 0%, var(--sol-base3) 100%);
+}
+.sol-theme .sc-lp-hero__headline {
+  color: var(--sol-base02);
+}
+.sol-theme .sc-lp-hero__subhead {
+  color: var(--sol-base00);
+}
+
+/* Feature cards */
+.sol-theme .sc-lp-features__card {
+  background: var(--sol-base3);
+  border: 1px solid var(--sol-base2);
+}
+.sol-theme .sc-lp-features__card:hover {
+  border-color: var(--sol-blue);
+  box-shadow: 0 2px 12px rgba(38, 139, 210, 0.1);
+}
+
+/* Sections */
+.sol-theme .sc-lp-section {
+  background: var(--sol-base3);
+}
+
+/* Code blocks */
+.sol-theme pre,
+.sol-theme code {
+  background: var(--sol-base2);
+  color: var(--sol-base01);
+}
+.sol-theme pre {
+  border: 1px solid #d6ceb5;
+}
+
+/* Buttons override for Solarized */
+.sol-theme .st-button--filled {
+  background: var(--sol-blue);
+  color: #fff;
+  border-color: var(--sol-blue);
+}
+.sol-theme .st-button--filled:hover {
+  background: var(--sol-cyan);
+  border-color: var(--sol-cyan);
+}
+.sol-theme .st-button--outlined {
+  border-color: var(--sol-blue);
+  color: var(--sol-blue);
+}
+.sol-theme .st-button--outlined:hover {
+  background: rgba(38, 139, 210, 0.08);
+}
+
+/* Footer */
+.sol-theme .sc-lp-footer {
+  background: var(--sol-base2);
+  color: var(--sol-base00);
+}
+.sol-theme .sc-lp-footer a {
+  color: var(--sol-base01);
+}
+
+/* Docs */
+.sol-theme .sc-docs-header {
+  background: var(--sol-base2);
+  border-bottom: 1px solid #d6ceb5;
+}
+.sol-theme .sc-docs-header a {
+  color: var(--sol-base01);
+}
+.sol-theme .sc-docs-sidebar {
+  background: var(--sol-base3);
+  border-right: 1px solid var(--sol-base2);
+}
+.sol-theme .sc-docs-sidebar__group-label {
+  color: var(--sol-base0);
+}
+.sol-theme .sc-docs-sidebar__link {
+  color: var(--sol-base00);
+}
+.sol-theme .sc-docs-sidebar__link--active {
+  color: var(--sol-blue);
+  border-left-color: var(--sol-blue);
+}
+.sol-theme .sc-docs-article {
+  color: var(--sol-base00);
+}
+.sol-theme .sc-docs-article table {
+  border-color: var(--sol-base2);
+}
+.sol-theme .sc-docs-article th {
+  background: var(--sol-base2);
+  color: var(--sol-base01);
+}

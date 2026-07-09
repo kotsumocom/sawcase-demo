@@ -5,11 +5,10 @@ export default define.page(function DemoDocsPage() {
     <div class="sc-docs-shell">
       <header class="sc-docs-header">
         <div class="sc-docs-header__inner">
-          <a href="/" class="sc-docs-header__brand">🪚 Demo Docs</a>
+          <span class="sc-docs-header__brand" style="font-weight:700;letter-spacing:-0.02em;">Demo Docs</span>
           <nav class="sc-docs-header__nav">
             <a href="/demo/docs">ドキュメント</a>
             <a href="/demo/admin">管理画面デモ</a>
-            <a href="/">← サイトに戻る</a>
           </nav>
         </div>
       </header>
