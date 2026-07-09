@@ -62,7 +62,7 @@ export default define.page(function UsersPage() {
                 </td>
                 <td style="padding:12px;">
                   <a
-                    href={`/admin/users/${user.id}`}
+                    href={`/demo/admin/users/${user.id}`}
                     class="st-button st-button--text"
                     style="font-size:0.8125rem;"
                   >

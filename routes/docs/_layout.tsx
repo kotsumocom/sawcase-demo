@@ -27,7 +27,7 @@ export default define.page(function DocsLayout({ Component, url }) {
             <a href="/docs" class={url.pathname === "/docs" ? "sc-docs-header__link--active" : ""}>
               ドキュメント
             </a>
-            <a href="/admin">管理画面デモ</a>
+            <a href="/demo/admin">デモ</a>
             <a
               href="https://github.com/kotsumocom/sawcase"
               target="_blank"

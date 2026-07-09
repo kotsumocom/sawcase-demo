@@ -8,127 +8,96 @@ export default define.page(function LandingPage() {
         <div class="sc-lp-header__inner">
           <a href="/" class="sc-lp-header__brand">🪚 Sawcase</a>
           <nav class="sc-lp-header__nav">
-            <a href="#features">機能</a>
             <a href="/docs">ドキュメント</a>
-            <a href="/admin">管理画面デモ</a>
+            <a href="/demo/admin">デモ</a>
+            <a href="https://github.com/kotsumocom/sawcase" target="_blank" rel="noopener">GitHub</a>
           </nav>
-          <div class="sc-lp-header__cta">
-            <a href="/auth/login" class="st-button st-button--filled">ログイン</a>
-          </div>
         </div>
       </header>
 
       {/* ヒーロー */}
       <section class="sc-lp-hero">
         <div class="sc-lp-hero__inner">
-          <h1 class="sc-lp-hero__headline">
-            美しい管理画面を<br />最速で構築する
-          </h1>
+          <h1 class="sc-lp-hero__headline">Sawcase</h1>
           <p class="sc-lp-hero__subhead">
-            Sawcase は sawtooth-css の上に載るレイアウト CSS + 軽量 JS
-            ライブラリ。管理画面・ドキュメント・LP の骨格をクラスベースで提供します。
+            sawtooth-css の上に載るレイアウト CSS + 軽量 JS ライブラリ。<br />
+            管理画面・ドキュメント・認証画面・LP の骨格をクラスベースで提供します。
           </p>
           <div class="sc-lp-hero__actions">
-            <a href="/admin" class="st-button st-button--filled st-button--lg">
-              管理画面デモ →
+            <a href="/docs" class="st-button st-button--filled st-button--lg">
+              ドキュメント →
             </a>
-            <a href="/docs" class="st-button st-button--outlined st-button--lg">
-              ドキュメント
+            <a href="/demo/admin" class="st-button st-button--outlined st-button--lg">
+              デモを見る
             </a>
           </div>
         </div>
       </section>
 
-      {/* フィーチャー */}
+      {/* 特徴 */}
       <section class="sc-lp-features" id="features">
-        <div style="text-align:center;margin-bottom:40px;">
-          <h2 style="font-size:2rem;font-weight:700;margin:0 0 8px;">
-            3つのレイアウト
-          </h2>
-          <p style="color:#49454f;max-width:36rem;margin:0 auto;">
-            プロダクトに必要な画面をすべてカバー
-          </p>
-        </div>
         <div class="sc-lp-features__grid">
-          <a href="/admin" class="sc-lp-features__card" style="text-decoration:none;color:inherit;">
-            <div class="sc-lp-features__card-icon">📊</div>
-            <h3 class="sc-lp-features__card-title">管理画面</h3>
+          <div class="sc-lp-features__card">
+            <div class="sc-lp-features__card-icon">📐</div>
+            <h3 class="sc-lp-features__card-title">レイアウト専用</h3>
             <p class="sc-lp-features__card-description">
-              ヘッダー + サイドナビ + ページ構造。ダッシュボード、CRUD、設定画面に対応。レスポンシブ対応のドロワーナビ付き。
+              コンポーネントは sawtooth-css に任せ、sawcase はページの「骨格」だけを担当。責務が明確。
             </p>
-          </a>
-          <a href="/docs" class="sc-lp-features__card" style="text-decoration:none;color:inherit;">
-            <div class="sc-lp-features__card-icon">📖</div>
-            <h3 class="sc-lp-features__card-title">ドキュメント</h3>
+          </div>
+          <div class="sc-lp-features__card">
+            <div class="sc-lp-features__card-icon">🧩</div>
+            <h3 class="sc-lp-features__card-title">クラスベース</h3>
             <p class="sc-lp-features__card-description">
-              3カラムレイアウト。左サイドバー + 記事本文 + 右 TOC。スクロール追従、コードブロック、テーブルのスタイリング。
+              フレームワーク非依存。HTML にクラス名を付けるだけ。Fresh, Hono, 素の HTML で動作。
             </p>
-          </a>
-          <a href="/auth/login" class="sc-lp-features__card" style="text-decoration:none;color:inherit;">
-            <div class="sc-lp-features__card-icon">🔒</div>
-            <h3 class="sc-lp-features__card-title">認証画面</h3>
+          </div>
+          <div class="sc-lp-features__card">
+            <div class="sc-lp-features__card-icon">🤖</div>
+            <h3 class="sc-lp-features__card-title">AI フレンドリー</h3>
             <p class="sc-lp-features__card-description">
-              中央配置の認証カード。ログイン、サインアップ、パスワードリセットに対応。
+              AGENT.md 付属。AI アシスタントがコピペ用テンプレートから即座にページを生成可能。
             </p>
-          </a>
+          </div>
         </div>
       </section>
 
-      {/* テクスタック */}
+      {/* レイアウト一覧 */}
       <section class="sc-lp-section">
         <div class="sc-lp-section__inner" style="text-align:center;">
-          <h2 class="sc-lp-section__title">技術スタック</h2>
-          <p class="sc-lp-section__subtitle">
-            Deno Fresh + Preact + Zag.js と完璧に統合
-          </p>
-          <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:24px;">
-            <div style="text-align:center;">
-              <div style="font-size:2.5rem;margin-bottom:8px;">🦕</div>
-              <div style="font-weight:600;">Deno Fresh</div>
-              <div style="font-size:0.875rem;color:#49454f;">SSR + Islands</div>
-            </div>
-            <div style="text-align:center;">
-              <div style="font-size:2.5rem;margin-bottom:8px;">⚛️</div>
-              <div style="font-weight:600;">Preact</div>
-              <div style="font-size:0.875rem;color:#49454f;">軽量 UI</div>
-            </div>
-            <div style="text-align:center;">
-              <div style="font-size:2.5rem;margin-bottom:8px;">⚡</div>
-              <div style="font-weight:600;">Zag.js</div>
-              <div style="font-size:0.875rem;color:#49454f;">ヘッドレス UI</div>
-            </div>
-            <div style="text-align:center;">
-              <div style="font-size:2.5rem;margin-bottom:8px;">🪚</div>
-              <div style="font-weight:600;">Sawcase</div>
-              <div style="font-size:0.875rem;color:#49454f;">レイアウト CSS</div>
-            </div>
+          <h2 class="sc-lp-section__title">提供レイアウト</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px;max-width:640px;margin-left:auto;margin-right:auto;">
+            <a href="/demo/admin" style="text-decoration:none;color:inherit;padding:20px;border-radius:12px;background:var(--st-sys-color-surface-container-low,#f7f2fa);text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:4px;">📊</div>
+              <div style="font-weight:600;">管理画面</div>
+              <div style="font-size:0.8125rem;color:#49454f;">sc-admin-*</div>
+            </a>
+            <a href="/demo/docs" style="text-decoration:none;color:inherit;padding:20px;border-radius:12px;background:var(--st-sys-color-surface-container-low,#f7f2fa);text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:4px;">📖</div>
+              <div style="font-weight:600;">ドキュメント</div>
+              <div style="font-size:0.8125rem;color:#49454f;">sc-docs-*</div>
+            </a>
+            <a href="/demo/auth/login" style="text-decoration:none;color:inherit;padding:20px;border-radius:12px;background:var(--st-sys-color-surface-container-low,#f7f2fa);text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:4px;">🔒</div>
+              <div style="font-weight:600;">認証画面</div>
+              <div style="font-size:0.8125rem;color:#49454f;">sc-auth</div>
+            </a>
           </div>
+        </div>
+      </section>
+
+      {/* インストール */}
+      <section class="sc-lp-section">
+        <div class="sc-lp-section__inner" style="text-align:center;">
+          <h2 class="sc-lp-section__title">インストール</h2>
+          <pre style="display:inline-block;text-align:left;background:#1e1e2e;color:#cdd6f4;padding:16px 24px;border-radius:12px;font-size:0.875rem;margin-top:16px;"><code>deno add @kotsumo/sawcase @kotsumo/sawtooth-css</code></pre>
         </div>
       </section>
 
       {/* フッター */}
       <footer class="sc-lp-footer">
         <div class="sc-lp-footer__inner">
-          <div class="sc-lp-footer__group">
-            <div class="sc-lp-footer__group-title">デモ</div>
-            <a href="/admin" class="sc-lp-footer__link">管理画面</a>
-            <a href="/docs" class="sc-lp-footer__link">ドキュメント</a>
-            <a href="/auth/login" class="sc-lp-footer__link">認証画面</a>
-          </div>
-          <div class="sc-lp-footer__group">
-            <div class="sc-lp-footer__group-title">リソース</div>
-            <a
-              href="https://github.com/kotsumocom/sawcase"
-              class="sc-lp-footer__link"
-            >
-              GitHub
-            </a>
-            <a href="https://jsr.io/@kotsumo/sawcase" class="sc-lp-footer__link">
-              JSR
-            </a>
-          </div>
           <div class="sc-lp-footer__copyright">
-            © 2026 Kotsumo. Built with Deno Fresh + Sawcase.
+            © 2026 Kotsumo — <a href="https://github.com/kotsumocom/sawcase" class="sc-lp-footer__link">GitHub</a> · <a href="https://jsr.io/@kotsumo/sawcase" class="sc-lp-footer__link">JSR</a>
           </div>
         </div>
       </footer>

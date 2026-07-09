@@ -17,7 +17,7 @@ export default define.page<typeof handler>(function UserDetailPage({ data }) {
           <p class="sc-admin-page__description">ID: {data.userId}</p>
         </div>
         <div class="sc-admin-page__actions">
-          <a href="/admin/users" class="st-button st-button--outlined">
+          <a href="/demo/admin/users" class="st-button st-button--outlined">
             ← 一覧に戻る
           </a>
         </div>

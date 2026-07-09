@@ -17,9 +17,9 @@ export default define.page(function AdminLayout({ Component }) {
             <a href="/" style="text-decoration:none;color:inherit;">Sawcase Demo</a>
           </span>
         </div>
-        <div class="sc-admin-header__breadcrumb">管理画面</div>
+        <div class="sc-admin-header__breadcrumb">管理画面デモ</div>
         <div class="sc-admin-header__actions">
-          <a href="/auth/login" style="background:none;border:none;cursor:pointer;padding:8px;text-decoration:none;">👤</a>
+          <a href="/demo/auth/login" style="background:none;border:none;cursor:pointer;padding:8px;text-decoration:none;">👤</a>
         </div>
       </header>
 
@@ -29,7 +29,7 @@ export default define.page(function AdminLayout({ Component }) {
         <nav class="sc-admin-nav" id="admin-nav">
           <div class="sc-admin-nav__group">
             <div class="sc-admin-nav__group-label">メイン</div>
-            <a href="/admin" class="sc-admin-nav__link">
+            <a href="/demo/admin" class="sc-admin-nav__link">
               <svg class="sc-admin-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="3" y="3" width="7" height="7" rx="1" />
                 <rect x="14" y="3" width="7" height="7" rx="1" />
@@ -38,7 +38,7 @@ export default define.page(function AdminLayout({ Component }) {
               </svg>
               <span>ダッシュボード</span>
             </a>
-            <a href="/admin/users" class="sc-admin-nav__link">
+            <a href="/demo/admin/users" class="sc-admin-nav__link">
               <svg class="sc-admin-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
@@ -48,7 +48,7 @@ export default define.page(function AdminLayout({ Component }) {
           </div>
           <div class="sc-admin-nav__group">
             <div class="sc-admin-nav__group-label">設定</div>
-            <a href="/admin/settings" class="sc-admin-nav__link">
+            <a href="/demo/admin/settings" class="sc-admin-nav__link">
               <svg class="sc-admin-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="3" />
                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
