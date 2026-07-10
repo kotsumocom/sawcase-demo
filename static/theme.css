@@ -20,7 +20,8 @@
 
 .sol-theme {
   background-color: var(--sol-base3);
-  color: var(--sol-base01);            /* base00→base01 (5.3:1) */
+  color: var(--sol-base01);
+  min-height: 100vh;
 }
 
 .sol-theme h1,
