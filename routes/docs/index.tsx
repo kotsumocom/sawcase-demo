@@ -1,10 +1,9 @@
 import { define } from "@/utils.ts";
 import { render } from "@deno/gfm";
+import overviewMd from "../../docs/content/overview.md?raw";
 
-export default define.page(async function DocsOverview() {
-  const filePath = new URL("../../docs/content/overview.md", import.meta.url);
-  const md = await Deno.readTextFile(filePath);
-  const html = render(md);
+export default define.page(function DocsOverview() {
+  const html = render(overviewMd);
 
   return (
     <article class="sc-docs-article">

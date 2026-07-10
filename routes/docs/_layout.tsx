@@ -1,11 +1,5 @@
 import { define } from "@/utils.ts";
-import { CSS, render } from "@deno/gfm";
-
-const SLUG_MAP: Record<string, { file: string; label: string }> = {
-  overview: { file: "overview.md", label: "概要" },
-  install: { file: "install.md", label: "インストール" },
-  reference: { file: "reference.md", label: "クラスリファレンス" },
-};
+import { CSS } from "@deno/gfm";
 
 const NAV_ITEMS = [
   {
@@ -22,14 +16,6 @@ const NAV_ITEMS = [
     ],
   },
 ];
-
-async function loadMarkdown(slug: string): Promise<string> {
-  const entry = SLUG_MAP[slug];
-  if (!entry) return render("# 404\n\nページが見つかりませんでした。");
-  const filePath = new URL(`../../docs/content/${entry.file}`, import.meta.url);
-  const md = await Deno.readTextFile(filePath);
-  return render(md);
-}
 
 export default define.page(function DocsLayout({ Component, url }) {
   const pathParts = url.pathname.split("/").filter(Boolean);

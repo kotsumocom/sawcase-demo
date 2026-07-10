@@ -1,10 +1,9 @@
 import { define } from "@/utils.ts";
 import { render } from "@deno/gfm";
+import installMd from "../../docs/content/install.md?raw";
 
-export default define.page(async function DocsInstall() {
-  const filePath = new URL("../../docs/content/install.md", import.meta.url);
-  const md = await Deno.readTextFile(filePath);
-  const html = render(md);
+export default define.page(function DocsInstall() {
+  const html = render(installMd);
 
   return (
     <article class="sc-docs-article">

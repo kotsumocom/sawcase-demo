@@ -1,10 +1,9 @@
 import { define } from "@/utils.ts";
 import { render } from "@deno/gfm";
+import referenceMd from "../../docs/content/reference.md?raw";
 
-export default define.page(async function DocsReference() {
-  const filePath = new URL("../../docs/content/reference.md", import.meta.url);
-  const md = await Deno.readTextFile(filePath);
-  const html = render(md);
+export default define.page(function DocsReference() {
+  const html = render(referenceMd);
 
   return (
     <article class="sc-docs-article">
