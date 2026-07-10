@@ -27,11 +27,11 @@ export default define.page(function DocsLayout({ Component, url }) {
       <div class="sc-docs-shell">
         <header class="sc-docs-header">
           <div class="sc-docs-header__inner">
-            <a href="/" class="sc-docs-header__brand" style="font-weight:700;letter-spacing:-0.02em;">Sawcase</a>
+            <a href="/" class="sc-docs-header__brand" style="font-weight:700;letter-spacing:-0.02em;text-decoration:none;">Sawcase</a>
             <nav class="sc-docs-header__nav">
-              <a href="/docs">ドキュメント</a>
-              <a href="/demo/admin" target="_blank" rel="noopener">デモ</a>
-              <a href="https://github.com/kotsumocom/sawcase" target="_blank" rel="noopener">GitHub</a>
+              <a href="/docs" class="sc-docs-header__link">ドキュメント</a>
+              <a href="/demo/admin" class="sc-docs-header__link" target="_blank" rel="noopener">デモ</a>
+              <a href="https://github.com/kotsumocom/sawcase" class="sc-docs-header__link" target="_blank" rel="noopener">GitHub</a>
             </nav>
           </div>
         </header>

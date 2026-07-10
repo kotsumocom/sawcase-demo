@@ -152,41 +152,67 @@
   color: var(--sol-base02);
 }
 
-/* Docs */
+/* Docs — ヘッダー */
 .sol-theme .sc-docs-header {
   background: var(--sol-base2);
   border-bottom: 1px solid #d6ceb5;
 }
+.sol-theme .sc-docs-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sol-theme .sc-docs-header__brand {
+  color: var(--sol-base03);
+  font-size: 1.125rem;
+}
+.sol-theme .sc-docs-header__nav {
+  display: flex;
+  gap: 20px;
+}
 .sol-theme .sc-docs-header a {
   color: var(--sol-base02);
 }
+.sol-theme .sc-docs-header a:hover {
+  color: var(--sol-blue);
+}
+
+/* Docs — サイドバー */
 .sol-theme .sc-docs-sidebar {
   background: var(--sol-base3);
   border-right: 1px solid var(--sol-base2);
 }
 .sol-theme .sc-docs-sidebar__group-label {
-  color: var(--sol-base00);
+  color: var(--sol-base01);
+  font-weight: 600;
 }
 .sol-theme .sc-docs-sidebar__link {
-  color: var(--sol-base01);
+  color: var(--sol-base02);
 }
 .sol-theme .sc-docs-sidebar__link--active {
   color: var(--sol-blue);
   border-left-color: var(--sol-blue);
+  font-weight: 600;
 }
+
+/* Docs — 記事本文（高コントラスト） */
 .sol-theme .sc-docs-article {
-  color: var(--sol-base01);
+  color: var(--sol-base02);
 }
 .sol-theme .sc-docs-article h1,
 .sol-theme .sc-docs-article h2,
 .sol-theme .sc-docs-article h3 {
-  color: var(--sol-base02);
+  color: var(--sol-base03);
 }
 .sol-theme .sc-docs-article table {
   border-color: var(--sol-base2);
 }
 .sol-theme .sc-docs-article th {
   background: var(--sol-base2);
+  color: var(--sol-base03);
+  font-weight: 600;
+}
+.sol-theme .sc-docs-article td {
   color: var(--sol-base02);
 }
 
@@ -213,16 +239,16 @@
   border-color: var(--sol-green);
 }
 
-/* GFM markdown-body overrides for Solarized */
+/* GFM markdown-body overrides for Solarized（高コントラスト） */
 .sol-theme .markdown-body {
-  color: var(--sol-base01);
+  color: var(--sol-base02);
   background: transparent;
 }
 .sol-theme .markdown-body h1,
 .sol-theme .markdown-body h2,
 .sol-theme .markdown-body h3,
 .sol-theme .markdown-body h4 {
-  color: var(--sol-base02);
+  color: var(--sol-base03);
   border-bottom-color: var(--sol-base2);
 }
 .sol-theme .markdown-body a {
@@ -230,21 +256,25 @@
 }
 .sol-theme .markdown-body code {
   background: var(--sol-base2);
-  color: var(--sol-base01);
+  color: var(--sol-base02);
 }
 .sol-theme .markdown-body pre {
   background: var(--sol-base02);
 }
 .sol-theme .markdown-body pre code {
   background: transparent;
-  color: var(--sol-base1);
+  color: var(--sol-base2);
 }
 .sol-theme .markdown-body blockquote {
   border-left-color: var(--sol-blue);
-  color: var(--sol-base00);
+  color: var(--sol-base01);
 }
 .sol-theme .markdown-body table th {
   background: var(--sol-base2);
+  color: var(--sol-base03);
+}
+.sol-theme .markdown-body table td {
+  color: var(--sol-base02);
 }
 .sol-theme .markdown-body table td,
 .sol-theme .markdown-body table th {
@@ -252,4 +282,10 @@
 }
 .sol-theme .markdown-body hr {
   background-color: var(--sol-base2);
+}
+.sol-theme .markdown-body li {
+  color: var(--sol-base02);
+}
+.sol-theme .markdown-body p {
+  color: var(--sol-base02);
 }
