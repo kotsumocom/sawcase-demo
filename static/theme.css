@@ -65,6 +65,12 @@
   background: var(--sol-base3);
   border: 1px solid var(--sol-base2);
 }
+.sol-theme .sc-lp-features__card-title {
+  color: var(--sol-base03);
+}
+.sol-theme .sc-lp-features__card-description {
+  color: var(--sol-base01);
+}
 
 /* Sections */
 .sol-theme .sc-lp-section {
