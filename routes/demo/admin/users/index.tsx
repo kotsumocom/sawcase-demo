@@ -29,7 +29,7 @@ export default define.page(function UsersPage() {
         >
           <thead>
             <tr
-              style="border-bottom:2px solid var(--st-sys-color-outline-variant,#cac4d0);"
+              style="border-bottom:2px solid var(--sc-sys-color-outline-variant,#cac4d0);"
             >
               <th style="text-align:left;padding:12px;font-weight:600;">名前</th>
               <th style="text-align:left;padding:12px;font-weight:600;">メールアドレス</th>
@@ -42,13 +42,13 @@ export default define.page(function UsersPage() {
             {USERS.map((user) => (
               <tr
                 key={user.id}
-                style="border-bottom:1px solid var(--st-sys-color-outline-variant,#cac4d0);"
+                style="border-bottom:1px solid var(--sc-sys-color-outline-variant,#cac4d0);"
               >
                 <td style="padding:12px;font-weight:500;">{user.name}</td>
                 <td style="padding:12px;color:#49454f;">{user.email}</td>
                 <td style="padding:12px;">
                   <span
-                    style="display:inline-block;padding:2px 10px;border-radius:9999px;font-size:0.75rem;font-weight:500;background:var(--st-sys-color-surface-variant,#e7e0ec);color:var(--st-sys-color-on-surface-variant,#49454f);"
+                    style="display:inline-block;padding:2px 10px;border-radius:9999px;font-size:0.75rem;font-weight:500;background:var(--sc-sys-color-surface-variant,#e7e0ec);color:var(--sc-sys-color-on-surface-variant,#49454f);"
                   >
                     {user.role}
                   </span>

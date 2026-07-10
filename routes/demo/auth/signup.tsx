@@ -54,7 +54,7 @@ export default define.page(function SignupPage() {
         </div>
         <div class="sc-auth__footer">
           すでにアカウントをお持ちの方は{" "}
-          <a href="/demo/auth/login" style="color:var(--st-sys-color-primary,#6750a4);font-weight:500;">
+          <a href="/demo/auth/login" style="color:var(--sc-sys-color-primary,#6750a4);font-weight:500;">
             ログイン
           </a>
         </div>

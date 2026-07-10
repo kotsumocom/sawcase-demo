@@ -56,23 +56,23 @@ const DEMOS = [
 
 export default define.page(function DemoIndex() {
   return (
-    <div style="min-height:100vh;background:var(--st-sys-color-surface);color:var(--st-sys-color-on-surface);">
-      <header style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--st-sys-color-outline-variant);">
+    <div style="min-height:100vh;background:var(--sc-sys-color-surface);color:var(--sc-sys-color-on-surface);">
+      <header style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--sc-sys-color-outline-variant);">
         <div>
           <a
             href="/"
-            style="font-size:1.25rem;font-weight:700;color:var(--st-sys-color-on-surface);text-decoration:none;letter-spacing:-0.02em;"
+            style="font-size:1.25rem;font-weight:700;color:var(--sc-sys-color-on-surface);text-decoration:none;letter-spacing:-0.02em;"
           >
             Sawcase
           </a>
-          <span style="margin-left:12px;font-size:0.875rem;color:var(--st-sys-color-on-surface-variant);">
+          <span style="margin-left:12px;font-size:0.875rem;color:var(--sc-sys-color-on-surface-variant);">
             デモ一覧
           </span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
           <a
             href="/docs"
-            style="font-size:0.875rem;color:var(--st-sys-color-primary);text-decoration:none;"
+            style="font-size:0.875rem;color:var(--sc-sys-color-primary);text-decoration:none;"
           >
             ドキュメント
           </a>
@@ -84,7 +84,7 @@ export default define.page(function DemoIndex() {
         <h1 style="font-size:2rem;font-weight:700;margin:0 0 8px;">
           レイアウトデモ
         </h1>
-        <p style="font-size:1rem;color:var(--st-sys-color-on-surface-variant);margin:0 0 40px;">
+        <p style="font-size:1rem;color:var(--sc-sys-color-on-surface-variant);margin:0 0 40px;">
           Sawcase が提供するレイアウトコンポーネントを実際に確認できます。
         </p>
 

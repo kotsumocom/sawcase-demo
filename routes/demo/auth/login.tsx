@@ -44,7 +44,7 @@ export default define.page(function LoginPage() {
         </div>
         <div class="sc-auth__footer">
           アカウントをお持ちでない方は{" "}
-          <a href="/demo/auth/signup" style="color:var(--st-sys-color-primary,#6750a4);font-weight:500;">
+          <a href="/demo/auth/signup" style="color:var(--sc-sys-color-primary,#6750a4);font-weight:500;">
             サインアップ
           </a>
         </div>

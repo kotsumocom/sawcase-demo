@@ -13,10 +13,10 @@ export default define.page(function SettingsPage() {
       <div class="sc-admin-page__body">
         {/* タブ（静的版）*/}
         <div
-          style="display:flex;gap:0;border-bottom:2px solid var(--st-sys-color-outline-variant,#cac4d0);margin-bottom:24px;"
+          style="display:flex;gap:0;border-bottom:2px solid var(--sc-sys-color-outline-variant,#cac4d0);margin-bottom:24px;"
         >
           <button
-            style="padding:12px 24px;font-size:0.875rem;font-weight:600;border:none;background:none;cursor:pointer;border-bottom:2px solid var(--st-sys-color-primary,#6750a4);color:var(--st-sys-color-primary,#6750a4);margin-bottom:-2px;"
+            style="padding:12px 24px;font-size:0.875rem;font-weight:600;border:none;background:none;cursor:pointer;border-bottom:2px solid var(--sc-sys-color-primary,#6750a4);color:var(--sc-sys-color-primary,#6750a4);margin-bottom:-2px;"
           >
             一般
           </button>

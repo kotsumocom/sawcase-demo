@@ -17,7 +17,6 @@ export default define.page(function App({ Component, url }) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
-        <link rel="stylesheet" href="/sawtooth.css" />
         <link rel="stylesheet" href="/sawcase.css" />
         <link rel="stylesheet" href="/theme.css" />
         <style

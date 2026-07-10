@@ -36,9 +36,9 @@ export default function ThemeToggle() {
         width: "40px",
         height: "40px",
         borderRadius: "50%",
-        border: "1px solid var(--st-sys-color-outline-variant, #49454e)",
-        background: "var(--st-sys-color-surface-container, transparent)",
-        color: "var(--st-sys-color-on-surface, currentColor)",
+        border: "1px solid var(--sc-sys-color-outline-variant, #49454e)",
+        background: "var(--sc-sys-color-surface-container, transparent)",
+        color: "var(--sc-sys-color-on-surface, currentColor)",
         cursor: "pointer",
         transition: "background 0.15s, color 0.15s",
       }}
