@@ -1,8 +1,12 @@
 import { define } from "@/utils.ts";
 
-export default define.page(function App({ Component }) {
+export default define.page(function App({ Component, url }) {
+  // /demo 以下はダークモード（sawtooth デフォルト）、それ以外はライトモード
+  const isDemo = url.pathname.startsWith("/demo");
+  const theme = isDemo ? undefined : "light";
+
   return (
-    <html lang="ja">
+    <html lang="ja" data-theme={theme}>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

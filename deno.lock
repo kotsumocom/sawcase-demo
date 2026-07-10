@@ -10,6 +10,7 @@
     "jsr:@fresh/core@2": "2.3.3",
     "jsr:@fresh/core@^2.3.3": "2.3.3",
     "jsr:@fresh/plugin-vite@^1.1.2": "1.1.2",
+    "jsr:@kotsumo/sawtooth-css@~0.1.4": "0.1.4",
     "jsr:@std/bytes@^1.0.6": "1.0.6",
     "jsr:@std/dotenv@~0.225.5": "0.225.6",
     "jsr:@std/encoding@^1.0.10": "1.0.11",
@@ -33,6 +34,7 @@
     "jsr:@std/uuid@^1.0.9": "1.1.1",
     "npm:@babel/core@^7.28.0": "7.29.0",
     "npm:@babel/preset-react@^7.27.1": "7.28.5_@babel+core@7.29.0",
+    "npm:@material/material-color-utilities@0.3": "0.3.0",
     "npm:@opentelemetry/api@^1.9.0": "1.9.0",
     "npm:@preact/signals@^2.5.1": "2.9.3_preact@10.29.6",
     "npm:@preact/signals@^2.9.0": "2.9.3_preact@10.29.6",
@@ -141,6 +143,13 @@
         "npm:@types/babel__core",
         "npm:rollup",
         "npm:vite@^7.1.4"
+      ]
+    },
+    "@kotsumo/sawtooth-css@0.1.4": {
+      "integrity": "d4586393e686d3b1b01d9e159dd3818c837625ffc2c4c12c289da4c078f96d51",
+      "dependencies": [
+        "jsr:@std/path@1",
+        "npm:@material/material-color-utilities"
       ]
     },
     "@std/bytes@1.0.6": {
@@ -802,6 +811,9 @@
         "@jridgewell/resolve-uri",
         "@jridgewell/sourcemap-codec"
       ]
+    },
+    "@material/material-color-utilities@0.3.0": {
+      "integrity": "sha512-ztmtTd6xwnuh2/xu+Vb01btgV8SQWYCaK56CkRK8gEkWe5TuDyBcYJ0wgkMRn+2VcE9KUmhvkz+N9GHrqw/C0g=="
     },
     "@opentelemetry/api@1.9.0": {
       "integrity": "sha512-3giAOQvZiH5F9bMlMiv8+GSPMeqg0dbaeo58/0SlA9sxSqZhnUtxzX9/2FzyhS9sWQf5S0GJE0AKBrFqjpeYcg=="
@@ -1471,6 +1483,7 @@
       "jsr:@deno/gfm@0.12",
       "jsr:@fresh/core@^2.3.3",
       "jsr:@fresh/plugin-vite@^1.1.2",
+      "jsr:@kotsumo/sawtooth-css@~0.1.4",
       "npm:@preact/signals@^2.9.0",
       "npm:@types/babel__core@^7.20.5",
       "npm:@zag-js/clipboard@^1.42.0",
