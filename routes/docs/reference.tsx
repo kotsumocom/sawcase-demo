@@ -1,6 +1,6 @@
 import { define } from "@/utils.ts";
 import { render } from "@deno/gfm";
-import referenceMd from "../../docs/content/reference.md?raw";
+import referenceMd from "../../docs/content/reference.md";
 
 export default define.page(function DocsReference() {
   const html = render(referenceMd);

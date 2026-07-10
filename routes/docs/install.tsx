@@ -1,6 +1,6 @@
 import { define } from "@/utils.ts";
 import { render } from "@deno/gfm";
-import installMd from "../../docs/content/install.md?raw";
+import installMd from "../../docs/content/install.md";
 
 export default define.page(function DocsInstall() {
   const html = render(installMd);

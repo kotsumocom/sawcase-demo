@@ -1,6 +1,6 @@
 import { define } from "@/utils.ts";
 import { render } from "@deno/gfm";
-import overviewMd from "../../docs/content/overview.md?raw";
+import overviewMd from "../../docs/content/overview.md";
 
 export default define.page(function DocsOverview() {
   const html = render(overviewMd);
