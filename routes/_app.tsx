@@ -1,8 +1,8 @@
 import { define } from "@/utils.ts";
 
 export default define.page(function App({ Component, url }) {
-  // /demo 以下はダークモード（sawtooth デフォルト）、それ以外はライトモード
   const isDemo = url.pathname.startsWith("/demo");
+  // LP/docs はライトモード固定。/demo は JS (ThemeToggle) が制御するため初期値なし。
   const theme = isDemo ? undefined : "light";
 
   return (
@@ -25,6 +25,18 @@ export default define.page(function App({ Component, url }) {
             __html: `body { font-family: 'Inter', system-ui, sans-serif; margin: 0; }`,
           }}
         />
+        {isDemo && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function() {
+                  var t = localStorage.getItem('sawcase-theme');
+                  if (t) { document.documentElement.dataset.theme = t; }
+                })();
+              `,
+            }}
+          />
+        )}
       </head>
       <body>
         <Component />
