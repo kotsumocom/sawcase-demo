@@ -37,6 +37,23 @@ const IconLock = () => (
     <path d="M7 11V7a5 5 0 0 1 10 0v4" />
   </svg>
 );
+const IconScale = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+    <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+    <path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+  </svg>
+);
+const IconAlertCircle = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10" /><path d="M12 8v4" /><path d="M12 16h.01" />
+  </svg>
+);
+const IconCreditCard = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="20" height="14" x="2" y="5" rx="2" /><path d="M2 10h20" />
+  </svg>
+);
 
 export default define.page(function LandingPage() {
   return (
@@ -103,7 +120,7 @@ export default define.page(function LandingPage() {
       <section class="sc-lp-section">
         <div class="sc-lp-section__inner" style="text-align:center;">
           <h2 class="sc-lp-section__title">提供レイアウト</h2>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px;max-width:640px;margin-left:auto;margin-right:auto;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:24px;max-width:900px;margin-left:auto;margin-right:auto;">
             <a href="/demo/admin" target="_blank" rel="noopener" class="layout-card">
               <div style="margin-bottom:6px;color:var(--sol-blue);"><IconLayoutDashboard /></div>
               <div class="layout-card__title">管理画面</div>
@@ -118,6 +135,21 @@ export default define.page(function LandingPage() {
               <div style="margin-bottom:6px;color:var(--sol-green);"><IconLock /></div>
               <div class="layout-card__title">認証画面</div>
               <div class="layout-card__code">sc-auth</div>
+            </a>
+            <a href="/demo/legal" target="_blank" rel="noopener" class="layout-card">
+              <div style="margin-bottom:6px;color:var(--sol-violet);"><IconScale /></div>
+              <div class="layout-card__title">規約ページ</div>
+              <div class="layout-card__code">sc-legal-*</div>
+            </a>
+            <a href="/demo/error" target="_blank" rel="noopener" class="layout-card">
+              <div style="margin-bottom:6px;color:var(--sol-orange);"><IconAlertCircle /></div>
+              <div class="layout-card__title">エラー</div>
+              <div class="layout-card__code">sc-error-*</div>
+            </a>
+            <a href="/demo/pricing" target="_blank" rel="noopener" class="layout-card">
+              <div style="margin-bottom:6px;color:var(--sol-yellow);"><IconCreditCard /></div>
+              <div class="layout-card__title">料金</div>
+              <div class="layout-card__code">sc-pricing-*</div>
             </a>
           </div>
         </div>
