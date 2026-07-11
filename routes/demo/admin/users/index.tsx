@@ -19,7 +19,7 @@ export default define.page(function UsersPage() {
           </p>
         </div>
         <div class="sc-admin-page__actions">
-          <button class="st-button st-button--filled">新規追加</button>
+          <button class="sc-ui-button sc-ui-button--filled">新規追加</button>
         </div>
       </div>
 
@@ -63,7 +63,7 @@ export default define.page(function UsersPage() {
                 <td style="padding:12px;">
                   <a
                     href={`/demo/admin/users/${user.id}`}
-                    class="st-button st-button--text"
+                    class="sc-ui-button sc-ui-button--text"
                     style="font-size:0.8125rem;"
                   >
                     編集

@@ -34,7 +34,7 @@ export default define.page(function LoginPage() {
               />
             </div>
             <button
-              class="st-button st-button--filled"
+              class="sc-ui-button sc-ui-button--filled"
               style="width:100%;justify-content:center;"
               type="submit"
             >

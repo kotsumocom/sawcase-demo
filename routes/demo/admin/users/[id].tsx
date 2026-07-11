@@ -17,7 +17,7 @@ export default define.page<typeof handler>(function UserDetailPage({ data }) {
           <p class="sc-admin-page__description">ID: {data.userId}</p>
         </div>
         <div class="sc-admin-page__actions">
-          <a href="/demo/admin/users" class="st-button st-button--outlined">
+          <a href="/demo/admin/users" class="sc-ui-button sc-ui-button--outlined">
             ← 一覧に戻る
           </a>
         </div>
@@ -61,10 +61,10 @@ export default define.page<typeof handler>(function UserDetailPage({ data }) {
             </select>
           </div>
           <div style="display:flex;gap:12px;padding-top:8px;">
-            <button class="st-button st-button--filled" type="submit">
+            <button class="sc-ui-button sc-ui-button--filled" type="submit">
               保存
             </button>
-            <button class="st-button st-button--outlined" type="button">
+            <button class="sc-ui-button sc-ui-button--outlined" type="button">
               削除
             </button>
           </div>

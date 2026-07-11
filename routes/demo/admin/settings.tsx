@@ -60,7 +60,7 @@ export default define.page(function SettingsPage() {
             </label>
           </div>
           <div style="padding-top:8px;">
-            <button class="st-button st-button--filled" type="submit">
+            <button class="sc-ui-button sc-ui-button--filled" type="submit">
               設定を保存
             </button>
           </div>

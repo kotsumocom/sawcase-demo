@@ -79,10 +79,10 @@ export default define.page(function LandingPage() {
             管理画面・ドキュメント・認証画面の骨格を Preact コンポーネントで提供します。
           </p>
           <div class="sc-lp-hero__actions">
-            <a href="/docs" class="st-button st-button--filled st-button--lg">
+            <a href="/docs" class="sc-ui-button sc-ui-button--filled sc-ui-button--lg">
               ドキュメント
             </a>
-            <a href="/demo/admin" target="_blank" rel="noopener" class="st-button st-button--outlined st-button--lg">
+            <a href="/demo/admin" target="_blank" rel="noopener" class="sc-ui-button sc-ui-button--outlined sc-ui-button--lg">
               デモを見る
             </a>
           </div>

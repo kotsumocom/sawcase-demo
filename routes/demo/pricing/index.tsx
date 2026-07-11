@@ -74,7 +74,7 @@ export default define.page(function PricingDemo() {
                 </ul>
                 <a
                   href={plan.ctaHref}
-                  class={`st-button ${plan.recommended ? "st-button--filled" : "st-button--outlined"}`}
+                  class={`sc-ui-button ${plan.recommended ? "sc-ui-button--filled" : "sc-ui-button--outlined"}`}
                   style="display:block;text-align:center;"
                 >
                   {plan.ctaLabel}

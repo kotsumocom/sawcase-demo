@@ -18,7 +18,7 @@ export default define.page(function ErrorDemo() {
           URL が正しいかご確認ください。
         </p>
         <div class="sc-error-card__actions">
-          <a href="/" class="st-button st-button--filled">
+          <a href="/" class="sc-ui-button sc-ui-button--filled">
             トップページに戻る
           </a>
         </div>
