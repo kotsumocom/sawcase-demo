@@ -1,5 +1,6 @@
 import { define } from "@/utils.ts";
 import { CSS } from "@deno/gfm";
+import { DocsSidebarGroup } from "@/components/DocsSidebarGroup.tsx";
 
 const NAV_ITEMS = [
   {
@@ -15,10 +16,23 @@ const NAV_ITEMS = [
       { href: "/docs/reference", slug: "reference", label: "クラスリファレンス" },
     ],
   },
+  {
+    group: "UIコンポーネント",
+    items: [
+      { href: "/docs/components/button", slug: "button", label: "Button" },
+      { href: "/docs/components/card", slug: "card", label: "Card" },
+      { href: "/docs/components/badge", slug: "badge", label: "Badge" },
+      { href: "/docs/components/alert", slug: "alert", label: "Alert" },
+      { href: "/docs/components/input", slug: "input", label: "Input / Textarea" },
+      { href: "/docs/components/field", slug: "field", label: "Field" },
+      { href: "/docs/components/layout", slug: "layout", label: "レイアウト" },
+    ],
+  },
 ];
 
 export default define.page(function DocsLayout({ Component, url }) {
   const pathParts = url.pathname.split("/").filter(Boolean);
+  // /docs → "overview", /docs/install → "install", /docs/components/button → "button"
   const slug = pathParts.length > 1 ? pathParts[pathParts.length - 1] : "overview";
 
   return (
@@ -39,8 +53,7 @@ export default define.page(function DocsLayout({ Component, url }) {
         <div class="sc-docs-body">
           <aside class="sc-docs-sidebar">
             {NAV_ITEMS.map((group) => (
-              <div class="sc-docs-sidebar__group" key={group.group}>
-                <div class="sc-docs-sidebar__group-label">{group.group}</div>
+              <DocsSidebarGroup label={group.group} key={group.group}>
                 {group.items.map((item) => (
                   <a
                     href={item.href}
@@ -50,7 +63,7 @@ export default define.page(function DocsLayout({ Component, url }) {
                     {item.label}
                   </a>
                 ))}
-              </div>
+              </DocsSidebarGroup>
             ))}
           </aside>
 
