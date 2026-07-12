@@ -64,7 +64,7 @@ export default define.page(function LandingPage() {
           <a href="/" class="sc-lp-header__brand" style="font-weight:700;letter-spacing:-0.02em;">Sawcase</a>
           <nav class="sc-lp-header__nav">
             <a href="/docs">ドキュメント</a>
-            <a href="/demo/admin" target="_blank" rel="noopener">デモ</a>
+            <a href="/demo">デモ</a>
             <a href="https://github.com/kotsumocom/sawcase" target="_blank" rel="noopener">GitHub</a>
           </nav>
         </div>
@@ -82,7 +82,7 @@ export default define.page(function LandingPage() {
             <a href="/docs" class="sc-ui-button sc-ui-button--filled sc-ui-button--lg">
               ドキュメント
             </a>
-            <a href="/demo/admin" target="_blank" rel="noopener" class="sc-ui-button sc-ui-button--outlined sc-ui-button--lg">
+            <a href="/demo" class="sc-ui-button sc-ui-button--outlined sc-ui-button--lg">
               デモを見る
             </a>
           </div>
