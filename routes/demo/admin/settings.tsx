@@ -38,9 +38,9 @@ export default define.page(function SettingsPage() {
               </div>
               <div class="sc-ui-field">
                 <label class="sc-ui-field__label">サブドメイン</label>
-                <div style="display:flex;align-items:center;gap:0;">
-                  <input class="sc-ui-input" type="text" value="kotsumo" style="border-radius:8px 0 0 8px;border-right:none;" />
-                  <span style="padding:12px 16px;background:var(--sc-sys-color-surface-container);border:1px solid var(--sc-sys-color-outline);border-radius:0 8px 8px 0;font-size:0.875rem;color:var(--sc-sys-color-on-surface-variant);white-space:nowrap;">
+                <div style="display:flex;align-items:stretch;">
+                  <input class="sc-ui-input" type="text" value="kotsumo" style="border-radius:8px 0 0 8px;border-right:none;flex:1;" />
+                  <span style="display:flex;align-items:center;padding:0 16px;background:var(--sc-sys-color-surface-container);border:1px solid var(--sc-sys-color-outline);border-left:none;border-radius:0 8px 8px 0;font-size:0.875rem;color:var(--sc-sys-color-on-surface-variant);white-space:nowrap;">
                     .sawcase.app
                   </span>
                 </div>

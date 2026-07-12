@@ -1,7 +1,6 @@
 import { define } from "@/utils.ts";
 import {
   AdminShell,
-  AdminBreadcrumb,
   AdminHeaderSearch,
   AdminHeaderNotifications,
   AdminFeedback,
@@ -16,16 +15,20 @@ import {
   Bell,
   Settings,
   HelpCircle,
+  Palette,
+  Shield,
+  Code,
+  CreditCard,
 } from "lucide-preact";
-import type { IconRailItem, NavGroup, NotificationItem, BreadcrumbSegment } from "@kotsumo/sawcase/components";
+import type { IconRailItem, NavGroup, NotificationItem } from "@kotsumo/sawcase/components";
 
-// アイコンレール（グローバルナビ）
+// アイコンレール（トップレベルセクション）
 const railItems: IconRailItem[] = [
-  { icon: LayoutDashboard, label: "ダッシュボード", value: "dashboard", href: "/demo/admin", active: true },
-  { icon: Users, label: "ユーザー", value: "users", href: "/demo/admin/users" },
+  { icon: LayoutDashboard, label: "概要", value: "dashboard", href: "/demo/admin", active: true },
+  { icon: BarChart3, label: "統計サマリー", value: "analytics", href: "/demo/admin/analytics" },
+  { icon: Users, label: "ユーザー管理", value: "users", href: "/demo/admin/users" },
   { icon: FolderKanban, label: "プロジェクト", value: "projects", href: "/demo/admin/projects" },
-  { icon: UsersRound, label: "チーム", value: "team", href: "/demo/admin/team" },
-  { icon: BarChart3, label: "分析", value: "analytics", href: "/demo/admin/analytics" },
+  { icon: UsersRound, label: "チーム管理", value: "team", href: "/demo/admin/team" },
   { icon: Bell, label: "通知", value: "notifications", href: "/demo/admin/notifications" },
 ];
 
@@ -34,57 +37,18 @@ const railBottomItems: IconRailItem[] = [
   { icon: HelpCircle, label: "ヘルプ", value: "help", href: "#" },
 ];
 
-// 詳細ナビ（セクション別）
+// 詳細ナビ（設定ページのサブメニュー等）
 const navGroups: NavGroup[] = [
-  {
-    label: "メイン",
-    items: [
-      { icon: LayoutDashboard, label: "概要", href: "/demo/admin", active: true },
-      { icon: BarChart3, label: "統計サマリー", href: "/demo/admin/analytics" },
-    ],
-  },
-  {
-    label: "管理",
-    items: [
-      { icon: Users, label: "ユーザー管理", href: "/demo/admin/users" },
-      { icon: FolderKanban, label: "プロジェクト", href: "/demo/admin/projects" },
-      { icon: UsersRound, label: "チームメンバー", href: "/demo/admin/team" },
-    ],
-  },
   {
     label: "設定",
     items: [
-      { icon: Settings, label: "一般設定", href: "/demo/admin/settings" },
-      { icon: Bell, label: "通知設定", href: "/demo/admin/notifications" },
+      { icon: Settings, label: "一般", href: "/demo/admin/settings", active: true },
+      { icon: Palette, label: "外観", href: "#" },
+      { icon: Shield, label: "セキュリティ", href: "#" },
+      { icon: Code, label: "API", href: "#" },
+      { icon: CreditCard, label: "請求", href: "#" },
     ],
   },
-];
-
-// パンくず
-const breadcrumbSegments: BreadcrumbSegment[] = [
-  {
-    label: "kotsumo",
-    dropdown: {
-      items: [
-        { label: "kotsumo", value: "kotsumo", href: "/demo/admin" },
-        { label: "dd2030jp", value: "dd2030jp", href: "#" },
-        { label: "personal", value: "personal", href: "#" },
-      ],
-      currentValue: "kotsumo",
-    },
-  },
-  {
-    label: "sawcase-demo",
-    dropdown: {
-      items: [
-        { label: "sawcase-demo", value: "sawcase-demo", href: "/demo/admin" },
-        { label: "polimoney-hub", value: "polimoney-hub", href: "#" },
-        { label: "polimoney-ledger", value: "polimoney-ledger", href: "#" },
-      ],
-      currentValue: "sawcase-demo",
-    },
-  },
-  { label: "管理画面" },
 ];
 
 // 通知サンプルデータ
@@ -98,7 +62,6 @@ export default define.page(function AdminLayout({ Component }) {
   return (
     <AdminShell
       brand="Sawcase Demo"
-      breadcrumb={<AdminBreadcrumb segments={breadcrumbSegments} />}
       navGroups={navGroups}
       rail={railItems}
       railMode="hover-expand"
