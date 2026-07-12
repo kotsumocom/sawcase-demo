@@ -20,6 +20,9 @@
   ],
   "imports": {
     "@/": "./",
+    "@kotsumo/sawcase": "../sawcase/mod.ts",
+    "@kotsumo/sawcase/components": "../sawcase/src/components/mod.ts",
+    "@kotsumo/sawcase/styles": "../sawcase/styles.ts",
     "@deno/gfm": "jsr:@deno/gfm@^0.12.0",
     "@zag-js/clipboard": "npm:@zag-js/clipboard@^1.42.0",
     "@zag-js/preact": "npm:@zag-js/preact@^1.42.0",
