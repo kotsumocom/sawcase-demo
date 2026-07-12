@@ -58,11 +58,13 @@ const notifications: NotificationItem[] = [
   { id: "3", title: "ビルドエラー", message: "CI パイプラインが失敗しました", time: "2時間前" },
 ];
 
-export default define.page(function AdminLayout({ Component }) {
+export default define.page(function AdminLayout({ Component, url }) {
+  const isSettings = url.pathname.startsWith("/demo/admin/settings");
+
   return (
     <AdminShell
       brand="Sawcase Demo"
-      navGroups={navGroups}
+      navGroups={isSettings ? navGroups : []}
       rail={railItems}
       railMode="hover-expand"
       railBottomItems={railBottomItems}
