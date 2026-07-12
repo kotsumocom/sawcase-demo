@@ -17,8 +17,8 @@
  * @param overlayId - オーバーレイ要素の ID（デフォルト: "admin-overlay"）
  */
 function initAdminNav(
-  navIdtring = "admin-nav",
-  overlayIdtring = "admin-overlay",
+  navId = "admin-nav",
+  overlayId = "admin-overlay",
 ) {
   const nav = document.getElementById(navId);
   const overlay = document.getElementById(overlayId);
@@ -30,21 +30,21 @@ function initAdminNav(
 
   /** ドロワーを開く */
   function open() {
-    nav!.classList.add("sc-admin-nav--open");
+    nav.classList.add("sc-admin-nav--open");
     overlay?.classList.add("sc-admin-overlay--visible");
     document.body.style.overflow = "hidden";
   }
 
   /** ドロワーを閉じる */
   function close() {
-    nav!.classList.remove("sc-admin-nav--open");
+    nav.classList.remove("sc-admin-nav--open");
     overlay?.classList.remove("sc-admin-overlay--visible");
     document.body.style.overflow = "";
   }
 
   /** トグル */
   function toggle() {
-    if (nav!.classList.contains("sc-admin-nav--open")) {
+    if (nav.classList.contains("sc-admin-nav--open")) {
       close();
     } else {
       open();
@@ -63,8 +63,8 @@ function initAdminNav(
   }
 
   // ESC キーで閉じる
-  document.addEventListener("keydown", (eeyboardEvent) => {
-    if (e.key === "Escape" && nav!.classList.contains("sc-admin-nav--open")) {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("sc-admin-nav--open")) {
       close();
     }
   });
@@ -92,8 +92,8 @@ function initAdminNav(
  * @param headingSelector - 監視する見出しのセレクタ（デフォルト: "h2, h3"）
  */
 function initDocsToc(
-  tocSelectortring = ".sc-docs-toc",
-  headingSelectortring = "h2, h3",
+  tocSelector = ".sc-docs-toc",
+  headingSelector = "h2, h3",
 ) {
   const toc = document.querySelector(tocSelector);
   if (!toc) return;
@@ -132,7 +132,7 @@ function initDocsToc(
       }
     },
     {
-      rootMargin"-20% 0px -80% 0px",
+      rootMargin: "-20% 0px -80% 0px",
       threshold,
     },
   );
