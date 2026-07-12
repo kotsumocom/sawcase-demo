@@ -1,4 +1,9 @@
 import { define } from "@/utils.ts";
+import {
+  ToggleSwitch,
+  InputGroup,
+  DangerZone,
+} from "@kotsumo/sawcase/components";
 
 export default define.page(function SettingsPage() {
   return (
@@ -11,18 +16,6 @@ export default define.page(function SettingsPage() {
       </div>
 
       <div class="sc-admin-page__body">
-        {/* タブ */}
-        <div class="sc-settings-tabs">
-          {["一般", "外観", "セキュリティ", "API", "請求"].map((tab, i) => (
-            <button
-              key={tab}
-              class={`sc-settings-tabs__tab${i === 0 ? " sc-settings-tabs__tab--active" : ""}`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
         <div class="sc-settings-form">
           {/* 基本情報 */}
           <section>
@@ -34,14 +27,15 @@ export default define.page(function SettingsPage() {
               </div>
               <div class="sc-ui-field">
                 <label class="sc-ui-field__label">サブドメイン</label>
-                <div class="sc-input-group">
+                <InputGroup suffix=".sawcase.app">
                   <input class="sc-ui-input" type="text" value="kotsumo" />
-                  <span class="sc-input-group__suffix">.sawcase.app</span>
-                </div>
+                </InputGroup>
               </div>
               <div class="sc-ui-field">
                 <label class="sc-ui-field__label">説明</label>
-                <textarea class="sc-ui-textarea" rows={3}>Fresh + Zag.js + Sawcase のデモサイト</textarea>
+                <textarea class="sc-ui-textarea" rows={3}>
+                  Fresh + Zag.js + Sawcase のデモサイト
+                </textarea>
               </div>
             </div>
           </section>
@@ -52,7 +46,7 @@ export default define.page(function SettingsPage() {
             <div class="sc-settings-form__row">
               <div class="sc-ui-field">
                 <label class="sc-ui-field__label">言語</label>
-                <select class="sc-ui-input" style="appearance:auto;">
+                <select class="sc-ui-input sc-filter-bar__select">
                   <option selected>日本語</option>
                   <option>English</option>
                   <option>中文</option>
@@ -61,7 +55,7 @@ export default define.page(function SettingsPage() {
               </div>
               <div class="sc-ui-field">
                 <label class="sc-ui-field__label">タイムゾーン</label>
-                <select class="sc-ui-input" style="appearance:auto;">
+                <select class="sc-ui-input sc-filter-bar__select">
                   <option selected>Asia/Tokyo (UTC+9)</option>
                   <option>America/New_York</option>
                   <option>Europe/London</option>
@@ -74,27 +68,12 @@ export default define.page(function SettingsPage() {
           <section>
             <h3 class="sc-settings-section__title">機能設定</h3>
             <div class="sc-toggle-list">
-              {[
-                { label: "二要素認証", desc: "ログイン時に認証コードを要求", on: true },
-                { label: "IP アクセス制限", desc: "許可リストの IP のみアクセス可能", on: false },
-                { label: "メンテナンスモード", desc: "管理者以外のアクセスを制限", on: false },
-                { label: "監査ログ", desc: "すべての操作を記録・保存", on: true },
-                { label: "SSO (SAML 2.0)", desc: "外部 IdP でのシングルサインオン", on: false },
-                { label: "自動バックアップ", desc: "毎日 AM 3:00 にデータをバックアップ", on: true },
-              ].map((item) => (
-                <div key={item.label} class="sc-toggle-list__item">
-                  <div>
-                    <div class="sc-toggle-list__label">{item.label}</div>
-                    <div class="sc-toggle-list__desc">{item.desc}</div>
-                  </div>
-                  <button
-                    class={`sc-toggle-switch ${item.on ? "sc-toggle-switch--on" : "sc-toggle-switch--off"}`}
-                    type="button"
-                  >
-                    <div class="sc-toggle-switch__knob" />
-                  </button>
-                </div>
-              ))}
+              <ToggleSwitch label="二要素認証" description="ログイン時に認証コードを要求" checked={true} />
+              <ToggleSwitch label="IP アクセス制限" description="許可リストの IP のみアクセス可能" />
+              <ToggleSwitch label="メンテナンスモード" description="管理者以外のアクセスを制限" />
+              <ToggleSwitch label="監査ログ" description="すべての操作を記録・保存" checked={true} />
+              <ToggleSwitch label="SSO (SAML 2.0)" description="外部 IdP でのシングルサインオン" />
+              <ToggleSwitch label="自動バックアップ" description="毎日 AM 3:00 にデータをバックアップ" checked={true} />
             </div>
           </section>
 
@@ -132,22 +111,12 @@ export default define.page(function SettingsPage() {
             <h3 class="sc-settings-section__title sc-settings-section__title--danger">
               危険ゾーン
             </h3>
-            <div class="sc-danger-zone">
-              <div class="sc-danger-zone__content">
-                <div>
-                  <div class="sc-danger-zone__label">組織を削除</div>
-                  <div class="sc-danger-zone__desc">
-                    すべてのデータとメンバーが完全に削除されます。この操作は取り消せません。
-                  </div>
-                </div>
-                <button
-                  class="sc-ui-button sc-ui-button--outlined"
-                  style="color:var(--sc-sys-color-error);border-color:var(--sc-sys-color-error);flex-shrink:0;"
-                >
-                  組織を削除
-                </button>
-              </div>
-            </div>
+            <DangerZone
+              title="組織を削除"
+              description="すべてのデータとメンバーが完全に削除されます。この操作は取り消せません。"
+              buttonLabel="組織を削除"
+              onAction={() => alert("削除確認ダイアログ")}
+            />
           </section>
 
           {/* 保存ボタン */}

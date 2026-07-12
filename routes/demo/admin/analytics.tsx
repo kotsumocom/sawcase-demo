@@ -1,4 +1,6 @@
 import { define } from "@/utils.ts";
+import { ProgressBar, StatusBadge } from "@kotsumo/sawcase/components";
+import type { BadgeVariant } from "@kotsumo/sawcase/components";
 
 const KPI_DATA = [
   { label: "MRR", value: "¥2,450,000", trend: "+18.3%", up: true },
@@ -17,29 +19,32 @@ const FEATURE_USAGE = [
 ];
 
 const PLAN_DISTRIBUTION = [
-  { name: "Free", count: 2100, percentage: 55, color: "var(--sc-sys-color-outline)" },
-  { name: "Starter", count: 1200, percentage: 31, color: "var(--sc-sys-color-tertiary)" },
-  { name: "Pro", count: 420, percentage: 11, color: "var(--sc-sys-color-primary)" },
-  { name: "Enterprise", count: 127, percentage: 3, color: "var(--sc-sys-color-secondary)" },
+  { name: "Free", count: 2100, percentage: 55, variant: "neutral" as BadgeVariant },
+  { name: "Starter", count: 1200, percentage: 31, variant: "info" as BadgeVariant },
+  { name: "Pro", count: 420, percentage: 11, variant: "success" as BadgeVariant },
+  { name: "Enterprise", count: 127, percentage: 3, variant: "warning" as BadgeVariant },
 ];
+
+const EVENT_VARIANT: Record<string, BadgeVariant> = {
+  success: "success",
+  warning: "warning",
+  error: "error",
+  info: "info",
+};
 
 export default define.page(function AnalyticsPage() {
   return (
     <div class="sc-admin-page">
       <div class="sc-admin-page__header">
         <div>
-          <h2 class="sc-admin-page__title">分析</h2>
-          <p class="sc-admin-page__description">
-            サービス利用状況と成長指標
-          </p>
+          <h2 class="sc-admin-page__title">統計サマリー</h2>
+          <p class="sc-admin-page__description">サービス利用状況と成長指標</p>
         </div>
-        {/* 期間セレクタ */}
-        <div style="display:flex;gap:0;border:1px solid var(--sc-sys-color-outline-variant);border-radius:8px;overflow:hidden;">
+        <div class="sc-admin-period-selector">
           {["日", "週", "月", "年"].map((period, i) => (
             <button
               key={period}
-              class={`sc-ui-button ${i === 2 ? "sc-ui-button--filled" : "sc-ui-button--text"}`}
-              style="border-radius:0;padding:6px 16px;font-size:0.8125rem;border:none;"
+              class={`sc-admin-period-selector__btn${i === 2 ? " sc-admin-period-selector__btn--active" : ""}`}
             >
               {period}
             </button>
@@ -48,51 +53,32 @@ export default define.page(function AnalyticsPage() {
       </div>
 
       <div class="sc-admin-page__body">
-        {/* KPI カード */}
-        <div class="sc-admin-stats" style="margin-bottom:32px;">
+        {/* KPI */}
+        <div class="sc-admin-stats">
           {KPI_DATA.map((kpi) => (
             <div class="sc-admin-stats__card" key={kpi.label}>
               <div class="sc-admin-stats__label">{kpi.label}</div>
               <div class="sc-admin-stats__value">{kpi.value}</div>
-              <div
-                class={`sc-admin-stats__trend sc-admin-stats__trend--${kpi.up ? "up" : "down"}`}
-              >
+              <div class={`sc-admin-stats__trend sc-admin-stats__trend--${kpi.up ? "up" : "down"}`}>
                 {kpi.trend}
               </div>
             </div>
           ))}
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;">
+        <div class="sc-admin-analytics-grid">
           {/* 機能利用状況 */}
           <div class="sc-ui-card sc-ui-card--outlined">
-            <div style="padding:20px;">
-              <h3
-                style="margin:0 0 20px;font-size:1rem;font-weight:600;color:var(--sc-sys-color-on-surface);"
-              >
-                機能利用状況
-              </h3>
-              <div style="display:flex;flex-direction:column;gap:16px;">
+            <div class="sc-admin-card-body">
+              <h3 class="sc-settings-section__title">機能利用状況</h3>
+              <div class="sc-admin-card-list">
                 {FEATURE_USAGE.map((f) => (
-                  <div key={f.name}>
-                    <div
-                      style="display:flex;justify-content:space-between;font-size:0.8125rem;margin-bottom:4px;"
-                    >
-                      <span style="color:var(--sc-sys-color-on-surface);">
-                        {f.name}
-                      </span>
-                      <span style="color:var(--sc-sys-color-on-surface-variant);">
-                        {f.users.toLocaleString()} ユーザー ({f.percentage}%)
-                      </span>
-                    </div>
-                    <div
-                      style="height:8px;background:var(--sc-sys-color-surface-container-highest);border-radius:4px;overflow:hidden;"
-                    >
-                      <div
-                        style={`height:100%;width:${f.percentage}%;background:var(--sc-sys-color-primary);border-radius:4px;transition:width 0.5s;`}
-                      />
-                    </div>
-                  </div>
+                  <ProgressBar
+                    key={f.name}
+                    label={f.name}
+                    value={f.percentage}
+                    formatValue={() => `${f.users.toLocaleString()} ユーザー (${f.percentage}%)`}
+                  />
                 ))}
               </div>
             </div>
@@ -100,53 +86,27 @@ export default define.page(function AnalyticsPage() {
 
           {/* プラン分布 */}
           <div class="sc-ui-card sc-ui-card--outlined">
-            <div style="padding:20px;">
-              <h3
-                style="margin:0 0 20px;font-size:1rem;font-weight:600;color:var(--sc-sys-color-on-surface);"
-              >
-                プラン分布
-              </h3>
-
-              {/* 横バー */}
-              <div
-                style="display:flex;height:32px;border-radius:8px;overflow:hidden;margin-bottom:20px;"
-              >
+            <div class="sc-admin-card-body">
+              <h3 class="sc-settings-section__title">プラン分布</h3>
+              <div class="sc-admin-plan-bar">
                 {PLAN_DISTRIBUTION.map((plan) => (
                   <div
                     key={plan.name}
-                    style={`width:${plan.percentage}%;background:${plan.color};transition:width 0.5s;`}
+                    class={`sc-admin-plan-bar__segment sc-admin-plan-bar__segment--${plan.variant}`}
+                    style={{ width: `${plan.percentage}%` }}
                     title={`${plan.name}: ${plan.percentage}%`}
                   />
                 ))}
               </div>
-
-              <div style="display:flex;flex-direction:column;gap:12px;">
+              <div class="sc-admin-plan-legend">
                 {PLAN_DISTRIBUTION.map((plan) => (
-                  <div
-                    key={plan.name}
-                    style="display:flex;align-items:center;justify-content:space-between;"
-                  >
-                    <div style="display:flex;align-items:center;gap:8px;">
-                      <span
-                        style={`width:12px;height:12px;border-radius:3px;background:${plan.color};`}
-                      />
-                      <span
-                        style="font-size:0.875rem;color:var(--sc-sys-color-on-surface);"
-                      >
-                        {plan.name}
-                      </span>
+                  <div key={plan.name} class="sc-admin-plan-legend__item">
+                    <div class="sc-admin-plan-legend__left">
+                      <StatusBadge variant={plan.variant} small>{plan.name}</StatusBadge>
                     </div>
-                    <div style="text-align:right;">
-                      <span
-                        style="font-size:0.875rem;font-weight:600;color:var(--sc-sys-color-on-surface);"
-                      >
-                        {plan.count.toLocaleString()}
-                      </span>
-                      <span
-                        style="font-size:0.75rem;color:var(--sc-sys-color-on-surface-variant);margin-left:8px;"
-                      >
-                        {plan.percentage}%
-                      </span>
+                    <div class="sc-admin-plan-legend__right">
+                      <span class="sc-admin-plan-legend__count">{plan.count.toLocaleString()}</span>
+                      <span class="sc-admin-plan-legend__pct">{plan.percentage}%</span>
                     </div>
                   </div>
                 ))}
@@ -157,13 +117,9 @@ export default define.page(function AnalyticsPage() {
 
         {/* 最近のイベント */}
         <div class="sc-ui-card sc-ui-card--outlined">
-          <div style="padding:20px;">
-            <h3
-              style="margin:0 0 16px;font-size:1rem;font-weight:600;color:var(--sc-sys-color-on-surface);"
-            >
-              最近のイベント
-            </h3>
-            <div style="display:flex;flex-direction:column;gap:0;">
+          <div class="sc-admin-card-body">
+            <h3 class="sc-settings-section__title">最近のイベント</h3>
+            <div class="sc-admin-event-list">
               {[
                 { time: "14:32", event: "新規ユーザー登録", detail: "sato@example.com が Pro プランで登録", type: "success" },
                 { time: "13:15", event: "API レート制限到達", detail: "org-a342 が 1,000 req/min を超過", type: "warning" },
@@ -171,34 +127,14 @@ export default define.page(function AnalyticsPage() {
                 { time: "11:20", event: "Webhook 配信失敗", detail: "https://api.client.com/hook — 503 エラー", type: "error" },
                 { time: "10:05", event: "新規ユーザー登録", detail: "yamada@example.com が Free プランで登録", type: "success" },
               ].map((e, i) => (
-                <div
-                  key={i}
-                  style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--sc-sys-color-outline-variant);"
-                >
-                  <span
-                    style="font-size:0.75rem;color:var(--sc-sys-color-on-surface-variant);min-width:40px;padding-top:2px;"
-                  >
-                    {e.time}
-                  </span>
+                <div key={i} class="sc-admin-event-list__item">
+                  <span class="sc-admin-event-list__time">{e.time}</span>
                   <div>
-                    <div style="display:flex;align-items:center;gap:8px;">
-                      <span
-                        style="font-size:0.875rem;font-weight:500;color:var(--sc-sys-color-on-surface);"
-                      >
-                        {e.event}
-                      </span>
-                      <span
-                        class={`sc-ui-badge sc-ui-badge--${e.type === "success" ? "success" : e.type === "warning" ? "warning" : e.type === "error" ? "error" : "primary"}`}
-                        style="font-size:0.625rem;"
-                      >
-                        {e.type}
-                      </span>
+                    <div class="sc-admin-event-list__header">
+                      <span class="sc-admin-event-list__name">{e.event}</span>
+                      <StatusBadge variant={EVENT_VARIANT[e.type]} small>{e.type}</StatusBadge>
                     </div>
-                    <div
-                      style="font-size:0.8125rem;color:var(--sc-sys-color-on-surface-variant);margin-top:2px;"
-                    >
-                      {e.detail}
-                    </div>
+                    <div class="sc-admin-event-list__detail">{e.detail}</div>
                   </div>
                 </div>
               ))}

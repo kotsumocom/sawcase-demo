@@ -1,4 +1,9 @@
 import { define } from "@/utils.ts";
+import {
+  ProgressBar,
+  StatusBadge,
+  UserAvatar,
+} from "@kotsumo/sawcase/components";
 
 const STATS = [
   { label: "MRR", value: "¥1,234,567", trend: "+12.5%", up: true, description: "月次経常収益（前月比）" },
@@ -8,18 +13,18 @@ const STATS = [
 ];
 
 const RECENT_SIGNUPS = [
-  { name: "田中 太郎", email: "tanaka@example.com", plan: "Pro", time: "5 分前", avatar: "🧑‍💻" },
-  { name: "佐藤 花子", email: "sato@example.com", plan: "Starter", time: "23 分前", avatar: "👩‍💼" },
-  { name: "鈴木 一郎", email: "suzuki@example.com", plan: "Free", time: "1 時間前", avatar: "👨‍🔬" },
-  { name: "高橋 美咲", email: "takahashi@example.com", plan: "Pro", time: "2 時間前", avatar: "👩‍🎨" },
-  { name: "伊藤 健太", email: "ito@example.com", plan: "Enterprise", time: "3 時間前", avatar: "🧑‍🎓" },
+  { name: "田中 太郎", email: "tanaka@example.com", plan: "Pro", time: "5 分前" },
+  { name: "佐藤 花子", email: "sato@example.com", plan: "Starter", time: "23 分前" },
+  { name: "鈴木 一郎", email: "suzuki@example.com", plan: "Free", time: "1 時間前" },
+  { name: "高橋 美咲", email: "takahashi@example.com", plan: "Pro", time: "2 時間前" },
+  { name: "伊藤 健太", email: "ito@example.com", plan: "Enterprise", time: "3 時間前" },
 ];
 
-const PLAN_BADGE: Record<string, string> = {
-  Free: "sc-ui-badge--secondary",
-  Starter: "sc-ui-badge--primary",
-  Pro: "sc-ui-badge--success",
-  Enterprise: "sc-ui-badge--error",
+const PLAN_VARIANT: Record<string, "neutral" | "info" | "success" | "error"> = {
+  Free: "neutral",
+  Starter: "info",
+  Pro: "success",
+  Enterprise: "error",
 };
 
 const USAGE_METRICS = [
@@ -42,15 +47,13 @@ export default define.page(function DashboardPage() {
       <div class="sc-admin-page__header">
         <div>
           <h2 class="sc-admin-page__title">ダッシュボード</h2>
-          <p class="sc-admin-page__description">
-            サービスの概要と主要指標
-          </p>
+          <p class="sc-admin-page__description">サービスの概要と主要指標</p>
         </div>
-        <div style="display:flex;gap:8px;">
-          <button class="sc-ui-button sc-ui-button--outlined" style="font-size:0.8125rem;">
+        <div class="sc-admin-page__actions">
+          <button class="sc-ui-button sc-ui-button--outlined sc-ui-button--sm">
             レポート出力
           </button>
-          <button class="sc-ui-button sc-ui-button--filled" style="font-size:0.8125rem;">
+          <button class="sc-ui-button sc-ui-button--filled sc-ui-button--sm">
             + 新規プロジェクト
           </button>
         </div>
@@ -60,16 +63,9 @@ export default define.page(function DashboardPage() {
       <div class="sc-admin-stats">
         {STATS.map((s) => (
           <div class="sc-admin-stats__card" key={s.label} title={s.description}>
-            <div class="sc-admin-stats__label">
-              {s.label}
-              <span style="display:inline-block;margin-left:4px;width:14px;height:14px;border-radius:50%;background:var(--sc-sys-color-surface-container-highest);text-align:center;line-height:14px;font-size:10px;color:var(--sc-sys-color-on-surface-variant);cursor:help;" title={s.description}>
-                ?
-              </span>
-            </div>
+            <div class="sc-admin-stats__label">{s.label}</div>
             <div class="sc-admin-stats__value">{s.value}</div>
-            <div
-              class={`sc-admin-stats__trend sc-admin-stats__trend--${s.up ? "up" : "down"}`}
-            >
+            <div class={`sc-admin-stats__trend sc-admin-stats__trend--${s.up ? "up" : "down"}`}>
               {s.trend}
             </div>
           </div>
@@ -77,61 +73,40 @@ export default define.page(function DashboardPage() {
       </div>
 
       <div class="sc-admin-page__body">
-        <div style="display:grid;grid-template-columns:1fr 360px;gap:20px;margin-bottom:24px;">
+        <div class="sc-admin-dashboard-grid">
           {/* リソース使用状況 */}
-          <div class="sc-ui-card sc-ui-card--outlined">
-            <div style="padding:20px;">
-              <h3 style="margin:0 0 20px;font-size:1rem;font-weight:600;color:var(--sc-sys-color-on-surface);">
-                リソース使用状況
-              </h3>
-              <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="sc-ui-card sc-ui-card--outlined sc-admin-dashboard-grid__main">
+            <div class="sc-admin-card-body">
+              <h3 class="sc-settings-section__title">リソース使用状況</h3>
+              <div class="sc-admin-card-list">
                 {USAGE_METRICS.map((m) => {
-                  const pct = Math.round((m.current / m.limit) * 100);
-                  const isHigh = pct > 80;
+                  const fmtCurrent = m.current > 1000 ? `${(m.current / 1000).toFixed(0)}K` : m.current;
+                  const fmtLimit = m.limit > 1000 ? `${(m.limit / 1000).toFixed(0)}K` : m.limit;
                   return (
-                    <div key={m.label}>
-                      <div style="display:flex;justify-content:space-between;font-size:0.8125rem;margin-bottom:6px;">
-                        <span style="color:var(--sc-sys-color-on-surface);font-weight:500;">
-                          {m.label}
-                        </span>
-                        <span style="color:var(--sc-sys-color-on-surface-variant);">
-                          {typeof m.current === "number" && m.current > 1000
-                            ? `${(m.current / 1000).toFixed(0)}K`
-                            : m.current} / {typeof m.limit === "number" && m.limit > 1000 ? `${(m.limit / 1000).toFixed(0)}K` : m.limit} {m.unit}
-                        </span>
-                      </div>
-                      <div style="height:8px;background:var(--sc-sys-color-surface-container-highest);border-radius:4px;overflow:hidden;">
-                        <div
-                          style={`height:100%;width:${pct}%;background:${isHigh ? "var(--sc-sys-color-error)" : "var(--sc-sys-color-primary)"};border-radius:4px;transition:width 0.5s;`}
-                        />
-                      </div>
-                      {isHigh && (
-                        <div style="font-size:0.6875rem;color:var(--sc-sys-color-error);margin-top:4px;">
-                          ⚠ 上限の {pct}% に達しています
-                        </div>
-                      )}
-                    </div>
+                    <ProgressBar
+                      key={m.label}
+                      label={m.label}
+                      value={m.current}
+                      max={m.limit}
+                      danger={m.limit * 0.8}
+                      formatValue={() => `${fmtCurrent} / ${fmtLimit} ${m.unit}`}
+                    />
                   );
                 })}
               </div>
             </div>
           </div>
 
-          {/* クイックアクション */}
-          <div>
-            <div class="sc-ui-card sc-ui-card--outlined" style="margin-bottom:16px;">
-              <div style="padding:20px;">
-                <h3 style="margin:0 0 16px;font-size:1rem;font-weight:600;color:var(--sc-sys-color-on-surface);">
-                  クイックアクション
-                </h3>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          {/* サイドバー */}
+          <div class="sc-admin-dashboard-grid__side">
+            {/* クイックアクション */}
+            <div class="sc-ui-card sc-ui-card--outlined">
+              <div class="sc-admin-card-body">
+                <h3 class="sc-settings-section__title">クイックアクション</h3>
+                <div class="sc-admin-quick-actions">
                   {QUICK_ACTIONS.map((a) => (
-                    <a
-                      key={a.label}
-                      href={a.href}
-                      style="display:flex;align-items:center;gap:8px;padding:12px;border-radius:8px;background:var(--sc-sys-color-surface-container);text-decoration:none;color:var(--sc-sys-color-on-surface);font-size:0.8125rem;transition:background 0.2s;"
-                    >
-                      <span style="font-size:1.25rem;">{a.icon}</span>
+                    <a key={a.label} href={a.href} class="sc-admin-quick-action">
+                      <span class="sc-admin-quick-action__icon">{a.icon}</span>
                       {a.label}
                     </a>
                   ))}
@@ -141,23 +116,20 @@ export default define.page(function DashboardPage() {
 
             {/* システムステータス */}
             <div class="sc-ui-card sc-ui-card--outlined">
-              <div style="padding:20px;">
-                <h3 style="margin:0 0 12px;font-size:1rem;font-weight:600;color:var(--sc-sys-color-on-surface);">
-                  システムステータス
-                </h3>
-                <div style="display:flex;flex-direction:column;gap:8px;">
+              <div class="sc-admin-card-body">
+                <h3 class="sc-settings-section__title">システムステータス</h3>
+                <div class="sc-admin-status-list">
                   {[
                     { name: "API サーバー", status: "稼働中", ok: true },
                     { name: "データベース", status: "稼働中", ok: true },
                     { name: "CDN", status: "稼働中", ok: true },
                     { name: "メールサービス", status: "遅延あり", ok: false },
                   ].map((s) => (
-                    <div key={s.name} style="display:flex;justify-content:space-between;align-items:center;font-size:0.8125rem;">
-                      <span style="color:var(--sc-sys-color-on-surface);">{s.name}</span>
-                      <span style={`display:flex;align-items:center;gap:4px;color:${s.ok ? "var(--sc-sys-color-primary)" : "var(--sc-sys-color-error)"};`}>
-                        <span style={`width:6px;height:6px;border-radius:50%;background:${s.ok ? "var(--sc-sys-color-primary)" : "var(--sc-sys-color-error)"};`} />
+                    <div key={s.name} class="sc-admin-status-list__item">
+                      <span>{s.name}</span>
+                      <StatusBadge variant={s.ok ? "success" : "error"} small>
                         {s.status}
-                      </span>
+                      </StatusBadge>
                     </div>
                   ))}
                 </div>
@@ -168,30 +140,26 @@ export default define.page(function DashboardPage() {
 
         {/* 最近のサインアップ */}
         <div class="sc-ui-card sc-ui-card--outlined">
-          <div style="padding:20px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-              <h3 style="margin:0;font-size:1rem;font-weight:600;color:var(--sc-sys-color-on-surface);">
-                最近のサインアップ
-              </h3>
-              <a href="/demo/admin/users" style="font-size:0.8125rem;color:var(--sc-sys-color-primary);text-decoration:none;">
+          <div class="sc-admin-card-body">
+            <div class="sc-admin-card-header">
+              <h3 class="sc-settings-section__title">最近のサインアップ</h3>
+              <a href="/demo/admin/users" class="sc-admin-card-header__link">
                 すべて表示 →
               </a>
             </div>
-            <div style="display:flex;flex-direction:column;gap:0;">
+            <div class="sc-admin-signup-list">
               {RECENT_SIGNUPS.map((u) => (
-                <div key={u.email} style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--sc-sys-color-outline-variant);">
-                  <div style="display:flex;align-items:center;gap:12px;">
-                    <span style="font-size:1.5rem;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--sc-sys-color-surface-container);border-radius:50%;">
-                      {u.avatar}
-                    </span>
+                <div key={u.email} class="sc-admin-signup-list__item">
+                  <div class="sc-data-table__user">
+                    <UserAvatar name={u.name} size="sm" />
                     <div>
-                      <div style="font-size:0.875rem;font-weight:500;color:var(--sc-sys-color-on-surface);">{u.name}</div>
-                      <div style="font-size:0.75rem;color:var(--sc-sys-color-on-surface-variant);">{u.email}</div>
+                      <div class="sc-data-table__user-name">{u.name}</div>
+                      <div class="sc-data-table__user-email">{u.email}</div>
                     </div>
                   </div>
-                  <div style="display:flex;align-items:center;gap:12px;">
-                    <span class={`sc-ui-badge ${PLAN_BADGE[u.plan]}`}>{u.plan}</span>
-                    <span style="font-size:0.75rem;color:var(--sc-sys-color-on-surface-variant);">{u.time}</span>
+                  <div class="sc-admin-signup-list__meta">
+                    <StatusBadge variant={PLAN_VARIANT[u.plan]}>{u.plan}</StatusBadge>
+                    <span class="sc-admin-signup-list__time">{u.time}</span>
                   </div>
                 </div>
               ))}
