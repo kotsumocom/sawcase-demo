@@ -6,6 +6,7 @@ import {
   Shield,
   Code,
   CreditCard,
+  Bell,
 } from "lucide-preact";
 import type { NavGroup, NotificationItem } from "@kotsumo/sawcase/components";
 import type { SerializableRailItem } from "@/islands/AdminRailIsland.tsx";
@@ -28,19 +29,23 @@ const RAIL_BOTTOM_ITEMS: Omit<SerializableRailItem, "active">[] = [
   { iconName: "HelpCircle", label: "ヘルプ", value: "help", href: "#" },
 ];
 
-// 詳細ナビ（設定ページのサブメニュー）
-const navGroups: NavGroup[] = [
-  {
-    label: "設定",
-    items: [
-      { icon: Settings, label: "一般", href: "/demo/admin/settings", active: true },
-      { icon: Palette, label: "外観", href: "#" },
-      { icon: Shield, label: "セキュリティ", href: "#" },
-      { icon: Code, label: "API", href: "#" },
-      { icon: CreditCard, label: "請求", href: "#" },
-    ],
-  },
-];
+// 詳細ナビ（設定ページのサブメニュー）— active は動的設定
+function getSettingsNavGroups(pathname: string): NavGroup[] {
+  const p = pathname.replace(/\/$/, "");
+  return [
+    {
+      label: "設定",
+      items: [
+        { icon: Settings, label: "一般", href: "/demo/admin/settings", active: p === "/demo/admin/settings" },
+        { icon: Bell, label: "通知", href: "/demo/admin/settings/notifications", active: p === "/demo/admin/settings/notifications" },
+        { icon: Palette, label: "外観", href: "#" },
+        { icon: Shield, label: "セキュリティ", href: "#" },
+        { icon: Code, label: "API", href: "#" },
+        { icon: CreditCard, label: "請求", href: "#" },
+      ],
+    },
+  ];
+}
 
 // 通知サンプルデータ（6件: maxItems=5 で「もっと見る」テスト）
 const notifications: NotificationItem[] = [
@@ -88,7 +93,7 @@ export default define.page(function AdminLayout({ Component, url }) {
   return (
     <AdminShell
       brand="Sawcase Demo"
-      navGroups={isSettings ? navGroups : []}
+      navGroups={isSettings ? getSettingsNavGroups(url.pathname) : []}
       railSlot={
         <AdminRailIsland
           items={railItems}

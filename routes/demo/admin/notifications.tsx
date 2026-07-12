@@ -1,7 +1,6 @@
 import { define } from "@/utils.ts";
 import {
   NotificationList,
-  ToggleSwitch,
 } from "@kotsumo/sawcase/components";
 import type { NotifGroup } from "@kotsumo/sawcase/components";
 
@@ -40,7 +39,6 @@ export default define.page(function NotificationsPage() {
       </div>
 
       <div class="sc-admin-page__body">
-        {/* 通知リスト */}
         <div class="sc-ui-card sc-ui-card--outlined">
           <NotificationList
             groups={NOTIFICATIONS}
@@ -48,18 +46,6 @@ export default define.page(function NotificationsPage() {
             onMarkAllRead={() => console.log("Mark all read")}
           />
         </div>
-
-        {/* 通知設定 */}
-        <section>
-          <h3 class="sc-settings-section__title">通知設定</h3>
-          <div class="sc-toggle-list">
-            <ToggleSwitch label="メール通知" description="重要なアラートをメールで受信" checked={true} />
-            <ToggleSwitch label="プッシュ通知" description="ブラウザのプッシュ通知を受信" checked={true} />
-            <ToggleSwitch label="Slack 連携" description="#alerts チャンネルに通知を送信" />
-            <ToggleSwitch label="週次レポート" description="毎週月曜に利用状況レポートを送信" checked={true} />
-            <ToggleSwitch label="マーケティング" description="製品アップデートやニュース" />
-          </div>
-        </section>
       </div>
     </div>
   );

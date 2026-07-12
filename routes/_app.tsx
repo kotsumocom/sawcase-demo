@@ -14,14 +14,16 @@ export default define.page(function App({ Component, url }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <link rel="stylesheet" href="/sawcase.css" />
         <link rel="stylesheet" href="/theme.css" />
         <style
           dangerouslySetInnerHTML={{
-            __html: `body { font-family: 'Inter', system-ui, sans-serif; margin: 0; }`,
+            __html: isDemo
+              ? `body { font-family: 'Noto Sans JP', 'Inter', system-ui, sans-serif; margin: 0; }`
+              : `body { font-family: 'Inter', system-ui, sans-serif; margin: 0; }`,
           }}
         />
         {isDemo && (
